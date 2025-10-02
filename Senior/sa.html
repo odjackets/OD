@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OD | Senior Jacket Couture</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Comprehensive Google Fonts for Senior Jackets -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Anton&family=Archivo+Black&family=Black+Ops+One&family=Russo+One&family=Orbitron:wght@400;500;600;700&family=Audiowide&family=Permanent+Marker&family=Rock+Salt&family=Press+Start+2P&family=Monoton&family=Iceberg&family=Plaster&family=Stardos+Stencil:wght@400;700&family=Abril+Fatface&family=Playfair+Display:wght@400;700&family=Pacifico&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Allura&family=Mr+De+Haviland&family=Brush+Script+MT&family=Lucida+Handwriting&family=Franklin+Gothic+Heavy&family=Cooper+Black&family=Impact&family=Arial+Black&family=Rockwell&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.17/dist/interact.min.js"></script>
@@ -74,7 +75,7 @@
         }
         
         .logo {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Bebas Neue', cursive;
             font-weight: 600;
             letter-spacing: 1px;
         }
@@ -422,29 +423,32 @@
             align-items: center;
             justify-content: center;
             color: var(--od-offwhite);
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Bebas Neue', cursive;
             font-weight: 700;
             font-size: 18px;
         }
 
-        /* Color picker styles */
-        .color-option {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+        /* Jacket image styles */
+        .jacket-option {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
             cursor: pointer;
             border: 2px solid transparent;
             transition: all 0.2s ease;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
         
-        .color-option:hover, .color-option.active {
+        .jacket-option:hover, .jacket-option.active {
             transform: scale(1.1);
             border-color: var(--od-gold);
         }
         
-        .color-grid {
+        .jacket-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             margin-top: 10px;
         }
@@ -457,6 +461,7 @@
             cursor: pointer;
             text-align: center;
             transition: all 0.2s ease;
+            font-size: 14px;
         }
         
         .font-option:hover, .font-option.active {
@@ -469,6 +474,9 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
             margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 5px;
         }
 
         /* Mobile-specific improvements */
@@ -538,12 +546,17 @@
                 padding-right: 15px;
             }
             
-            .color-grid {
-                grid-template-columns: repeat(4, 1fr);
+            .jacket-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
             
             .font-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .jacket-option {
+                width: 70px;
+                height: 70px;
             }
         }
 
@@ -559,7 +572,52 @@
             h1 {
                 font-size: 1.75rem !important;
             }
+            
+            .jacket-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .jacket-option {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .font-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-height: 150px;
+            }
         }
+
+        /* Font preview classes - EXPANDED */
+        .font-bebas { font-family: 'Bebas Neue', cursive; }
+        .font-oswald { font-family: 'Oswald', sans-serif; }
+        .font-anton { font-family: 'Anton', sans-serif; }
+        .font-archivo { font-family: 'Archivo Black', sans-serif; }
+        .font-blackops { font-family: 'Black Ops One', cursive; }
+        .font-russo { font-family: 'Russo One', sans-serif; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-audiowide { font-family: 'Audiowide', cursive; }
+        .font-permanent { font-family: 'Permanent Marker', cursive; }
+        .font-rocksalt { font-family: 'Rock Salt', cursive; }
+        .font-pressstart { font-family: 'Press Start 2P', cursive; }
+        .font-monoton { font-family: 'Monoton', cursive; }
+        .font-iceberg { font-family: 'Iceberg', cursive; }
+        .font-plaster { font-family: 'Plaster', cursive; }
+        .font-stardos { font-family: 'Stardos Stencil', cursive; }
+        .font-abril { font-family: 'Abril Fatface', cursive; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+        .font-dancing { font-family: 'Dancing Script', cursive; }
+        .font-greatvibes { font-family: 'Great Vibes', cursive; }
+        .font-allura { font-family: 'Allura', cursive; }
+        .font-mrdehaviland { font-family: 'Mr De Haviland', cursive; }
+        .font-brush { font-family: 'Brush Script MT', cursive; }
+        .font-lucida { font-family: 'Lucida Handwriting', cursive; }
+        .font-franklin { font-family: 'Franklin Gothic Heavy', sans-serif; }
+        .font-cooper { font-family: 'Cooper Black', serif; }
+        .font-impact { font-family: Impact, sans-serif; }
+        .font-arial { font-family: Arial Black, sans-serif; }
+        .font-rockwell { font-family: Rockwell, serif; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -614,7 +672,7 @@
         <div class="flex flex-col lg:flex-row gap-6 md:gap-8">
             <!-- Design Area -->
             <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-6 md:p-8 border od-border">
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Cormorant Garamond', serif;">Design Your Masterpiece</h2>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Bebas Neue', cursive;">Design Your Masterpiece</h2>
                 <p class="od-text-dark mb-6">Upload your personal imagery to create unique patches for your jacket.</p>
                 
                 <!-- Upload Section -->
@@ -637,19 +695,49 @@
                         <div>
                             <label class="block od-text-dark font-medium mb-2">Font Family:</label>
                             <div class="font-grid">
-                                <div class="font-option active" data-font="Inter" onclick="selectFont(this, 'Inter')">Inter</div>
-                                <div class="font-option" data-font="Poppins" onclick="selectFont(this, 'Poppins')">Poppins</div>
-                                <div class="font-option" data-font="Roboto" onclick="selectFont(this, 'Roboto')">Roboto</div>
-                                <div class="font-option" data-font="Montserrat" onclick="selectFont(this, 'Montserrat')">Montserrat</div>
-                                <div class="font-option" data-font="Playfair Display" onclick="selectFont(this, 'Playfair Display')">Playfair</div>
-                                <div class="font-option" data-font="Cormorant Garamond" onclick="selectFont(this, 'Cormorant Garamond')">Cormorant</div>
+                                <!-- Varsity/Block Fonts -->
+                                <div class="font-option active font-bebas" data-font="Bebas Neue" onclick="selectFont(this, 'Bebas Neue')">VARSITY</div>
+                                <div class="font-option font-oswald" data-font="Oswald" onclick="selectFont(this, 'Oswald')">OSWALD</div>
+                                <div class="font-option font-anton" data-font="Anton" onclick="selectFont(this, 'Anton')">ANTON</div>
+                                <div class="font-option font-archivo" data-font="Archivo Black" onclick="selectFont(this, 'Archivo Black')">ARCHIVO</div>
+                                <div class="font-option font-impact" data-font="Impact" onclick="selectFont(this, 'Impact')">IMPACT</div>
+                                <div class="font-option font-arial" data-font="Arial Black" onclick="selectFont(this, 'Arial Black')">ARIAL</div>
+                                <div class="font-option font-blackops" data-font="Black Ops One" onclick="selectFont(this, 'Black Ops One')">BLACK OPS</div>
+                                <div class="font-option font-russo" data-font="Russo One" onclick="selectFont(this, 'Russo One')">RUSSO</div>
+                                
+                                <!-- Tech/Modern Fonts -->
+                                <div class="font-option font-orbitron" data-font="Orbitron" onclick="selectFont(this, 'Orbitron')">ORBITRON</div>
+                                <div class="font-option font-audiowide" data-font="Audiowide" onclick="selectFont(this, 'Audiowide')">AUDIO</div>
+                                <div class="font-option font-pressstart" data-font="Press Start 2P" onclick="selectFont(this, 'Press Start 2P')">RETRO</div>
+                                <div class="font-option font-monoton" data-font="Monoton" onclick="selectFont(this, 'Monoton')">MONOTON</div>
+                                <div class="font-option font-iceberg" data-font="Iceberg" onclick="selectFont(this, 'Iceberg')">ICEBERG</div>
+                                <div class="font-option font-plaster" data-font="Plaster" onclick="selectFont(this, 'Plaster')">PLASTER</div>
+                                <div class="font-option font-stardos" data-font="Stardos Stencil" onclick="selectFont(this, 'Stardos Stencil')">STENCIL</div>
+                                
+                                <!-- Script & Elegant Fonts -->
+                                <div class="font-option font-brush" data-font="Brush Script MT" onclick="selectFont(this, 'Brush Script MT')">BRUSH</div>
+                                <div class="font-option font-lucida" data-font="Lucida Handwriting" onclick="selectFont(this, 'Lucida Handwriting')">LUCIDA</div>
+                                <div class="font-option font-pacifico" data-font="Pacifico" onclick="selectFont(this, 'Pacifico')">PACIFICO</div>
+                                <div class="font-option font-dancing" data-font="Dancing Script" onclick="selectFont(this, 'Dancing Script')">DANCING</div>
+                                <div class="font-option font-greatvibes" data-font="Great Vibes" onclick="selectFont(this, 'Great Vibes')">GREAT VIBES</div>
+                                <div class="font-option font-allura" data-font="Allura" onclick="selectFont(this, 'Allura')">ALLURA</div>
+                                <div class="font-option font-mrdehaviland" data-font="Mr De Haviland" onclick="selectFont(this, 'Mr De Haviland')">HAVILAND</div>
+                                <div class="font-option font-permanent" data-font="Permanent Marker" onclick="selectFont(this, 'Permanent Marker')">MARKER</div>
+                                <div class="font-option font-rocksalt" data-font="Rock Salt" onclick="selectFont(this, 'Rock Salt')">ROCK SALT</div>
+                                
+                                <!-- Classic Fonts -->
+                                <div class="font-option font-franklin" data-font="Franklin Gothic Heavy" onclick="selectFont(this, 'Franklin Gothic Heavy')">FRANKLIN</div>
+                                <div class="font-option font-cooper" data-font="Cooper Black" onclick="selectFont(this, 'Cooper Black')">COOPER</div>
+                                <div class="font-option font-rockwell" data-font="Rockwell" onclick="selectFont(this, 'Rockwell')">ROCKWELL</div>
+                                <div class="font-option font-abril" data-font="Abril Fatface" onclick="selectFont(this, 'Abril Fatface')">ABRIL</div>
+                                <div class="font-option font-playfair" data-font="Playfair Display" onclick="selectFont(this, 'Playfair Display')">PLAYFAIR</div>
                             </div>
                         </div>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block od-text-dark font-medium mb-2">Text Size:</label>
-                                <input type="range" id="textSize" min="12" max="72" value="24" class="w-full">
+                                <input type="range" id="textSize" min="8" max="164" value="24" class="w-full">
                                 <div class="text-center text-sm od-text-dark" id="textSizeValue">24px</div>
                             </div>
                             
@@ -673,44 +761,15 @@
                     </div>
                 </div>
 
-                <!-- Jacket Color Customization -->
+                <!-- Jacket Selection -->
                 <div class="mb-6 border-t pt-6 border-od-taupe">
-                    <h3 class="text-xl font-semibold mb-4 od-text-dark">Jacket Colors</h3>
+                    <h3 class="text-xl font-semibold mb-4 od-text-dark">Select Jacket Style</h3>
                     
                     <div class="space-y-4">
                         <div>
-                            <label class="block od-text-dark font-medium mb-2">Jacket Body Color:</label>
-                            <div class="color-grid">
-                                <div class="color-option active" style="background-color: #1a1a1a;" onclick="selectJacketColor(this, '#1a1a1a')"></div>
-                                <div class="color-option" style="background-color: #2d3748;" onclick="selectJacketColor(this, '#2d3748')"></div>
-                                <div class="color-option" style="background-color: #4a5568;" onclick="selectJacketColor(this, '#4a5568')"></div>
-                                <div class="color-option" style="background-color: #718096;" onclick="selectJacketColor(this, '#718096')"></div>
-                                <div class="color-option" style="background-color: #2c5282;" onclick="selectJacketColor(this, '#2c5282')"></div>
-                                <div class="color-option" style="background-color: #2d5a27;" onclick="selectJacketColor(this, '#2d5a27')"></div>
-                                <div class="color-option" style="background-color: #744210;" onclick="selectJacketColor(this, '#744210')"></div>
-                                <div class="color-option" style="background-color: #702459;" onclick="selectJacketColor(this, '#702459')"></div>
-                                <div class="color-option" style="background-color: #1a202c;" onclick="selectJacketColor(this, '#1a202c')"></div>
-                                <div class="color-option" style="background-color: #e53e3e;" onclick="selectJacketColor(this, '#e53e3e')"></div>
-                                <div class="color-option" style="background-color: #dd6b20;" onclick="selectJacketColor(this, '#dd6b20')"></div>
-                                <div class="color-option" style="background-color: #38a169;" onclick="selectJacketColor(this, '#38a169')"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="block od-text-dark font-medium mb-2">Sleeves Color:</label>
-                            <div class="color-grid">
-                                <div class="color-option active" style="background-color: #2d3748;" onclick="selectSleevesColor(this, '#2d3748')"></div>
-                                <div class="color-option" style="background-color: #1a1a1a;" onclick="selectSleevesColor(this, '#1a1a1a')"></div>
-                                <div class="color-option" style="background-color: #4a5568;" onclick="selectSleevesColor(this, '#4a5568')"></div>
-                                <div class="color-option" style="background-color: #718096;" onclick="selectSleevesColor(this, '#718096')"></div>
-                                <div class="color-option" style="background-color: #2c5282;" onclick="selectSleevesColor(this, '#2c5282')"></div>
-                                <div class="color-option" style="background-color: #2d5a27;" onclick="selectSleevesColor(this, '#2d5a27')"></div>
-                                <div class="color-option" style="background-color: #744210;" onclick="selectSleevesColor(this, '#744210')"></div>
-                                <div class="color-option" style="background-color: #702459;" onclick="selectSleevesColor(this, '#702459')"></div>
-                                <div class="color-option" style="background-color: #1a202c;" onclick="selectSleevesColor(this, '#1a202c')"></div>
-                                <div class="color-option" style="background-color: #e53e3e;" onclick="selectSleevesColor(this, '#e53e3e')"></div>
-                                <div class="color-option" style="background-color: #dd6b20;" onclick="selectSleevesColor(this, '#dd6b20')"></div>
-                                <div class="color-option" style="background-color: #38a169;" onclick="selectSleevesColor(this, '#38a169')"></div>
+                            <label class="block od-text-dark font-medium mb-2">Jacket Base:</label>
+                            <div class="jacket-grid" id="jacketOptions">
+                                <!-- Jacket options will be populated by JavaScript -->
                             </div>
                         </div>
                     </div>
@@ -731,7 +790,7 @@
 
             <!-- Mockup Area -->
             <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-6 md:p-8 border od-border">
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Cormorant Garamond', serif;">Jacket Preview</h2>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Bebas Neue', cursive;">Jacket Preview</h2>
                 <p class="od-text-dark mb-6">Visualize your custom design in real-time.</p>
                 
                 <!-- Section Toggle Buttons -->
@@ -810,6 +869,42 @@
     </div>
 
     <script>
+        // Jacket image data - REPLACE THESE URLs WITH YOUR ACTUAL JACKET IMAGES
+        const jacketImages = {
+            'black': {
+                front: 'Untitled-1.png',
+                back: 'Untitled-2.png'
+            },
+            'navy': {
+                front: 'Untitled-3.png',
+                back: 'Untitled-4.png'
+            },
+            'red': {
+                front: 'Untitled-5.png',
+                back: 'Untitled-6.png'
+            },
+            'green': {
+                front: 'Untitled-7.png',
+                back: 'Untitled-8.png'
+            },
+            'purple': {
+                front: 'Untitled-9.png',
+                back: 'Untitled-10.png'
+            },
+            'white': {
+                front: 'Untitled-11.png',
+                back: 'Untitled-12.png'
+            },
+            'grey': {
+                front: 'Untitled-13.png',
+                back: 'Untitled-14.png'
+            },
+            'burgundy': {
+                front: 'Untitled-15.png',
+                back: 'Untitled-16.png'
+            }
+        };
+
         // Main application class
         class JacketCustomizer {
             constructor() {
@@ -827,14 +922,7 @@
                     front: [],
                     back: []
                 };
-                this.jacketColors = {
-                    front: '#1a1a1a',
-                    back: '#1a1a1a'
-                };
-                this.sleevesColors = {
-                    front: '#2d3748',
-                    back: '#2d3748'
-                };
+                this.currentJacket = 'black'; // Default jacket
                 
                 this.init();
             }
@@ -845,6 +933,7 @@
                 this.loadDesign();
                 this.setupMobileInteractions();
                 this.setupTextControls();
+                this.setupJacketOptions();
             }
 
             bindEvents() {
@@ -878,6 +967,44 @@
                 textSizeSlider.addEventListener('input', function() {
                     textSizeValue.textContent = this.value + 'px';
                 });
+            }
+
+            setupJacketOptions() {
+                const jacketGrid = document.getElementById('jacketOptions');
+                jacketGrid.innerHTML = '';
+                
+                Object.keys(jacketImages).forEach(color => {
+                    const jacketOption = document.createElement('div');
+                    jacketOption.className = `jacket-option ${color === this.currentJacket ? 'active' : ''}`;
+                    jacketOption.style.backgroundImage = `url('${jacketImages[color].front}')`;
+                    jacketOption.setAttribute('data-color', color);
+                    jacketOption.setAttribute('title', color.charAt(0).toUpperCase() + color.slice(1));
+                    jacketOption.onclick = () => this.selectJacket(color);
+                    
+                    jacketGrid.appendChild(jacketOption);
+                });
+            }
+
+            selectJacket(color) {
+                this.currentJacket = color;
+                
+                // Update active state
+                document.querySelectorAll('.jacket-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                document.querySelector(`.jacket-option[data-color="${color}"]`).classList.add('active');
+                
+                // Update jacket images
+                this.updateJacketImages();
+                this.showNotification(`${color.charAt(0).toUpperCase() + color.slice(1)} jacket selected`, 'info');
+            }
+
+            updateJacketImages() {
+                const frontSection = document.getElementById('front-section');
+                const backSection = document.getElementById('back-section');
+                
+                frontSection.style.backgroundImage = `url('${jacketImages[this.currentJacket].front}')`;
+                backSection.style.backgroundImage = `url('${jacketImages[this.currentJacket].back}')`;
             }
 
             handleImageUpload(e) {
@@ -918,7 +1045,6 @@
                 
                 this.updatePatches();
                 this.updateTexts();
-                this.updateJacketColors();
             }
 
             // Update displayed patches for current section
@@ -935,21 +1061,6 @@
                 this.texts[this.currentSection].forEach(text => {
                     this.createTextElement(text);
                 });
-            }
-
-            // Update jacket colors
-            updateJacketColors() {
-                const jacketColor = this.jacketColors[this.currentSection];
-                const sleevesColor = this.sleevesColors[this.currentSection];
-                
-                // Update jacket preview (in a real app, you would update the actual jacket image)
-                // For now, we'll just update the placeholder background color
-                const jacketSections = document.querySelectorAll('.jacket-section');
-                jacketSections.forEach(section => {
-                    section.style.backgroundColor = jacketColor;
-                });
-                
-                this.showNotification('Jacket colors updated', 'info');
             }
 
             // Create patch element
@@ -1122,18 +1233,6 @@
                 document.getElementById('textContent').value = '';
                 
                 this.showNotification('Text added successfully!', 'success');
-            }
-
-            // Update jacket color
-            updateJacketColor(color) {
-                this.jacketColors[this.currentSection] = color;
-                this.updateJacketColors();
-            }
-
-            // Update sleeves color
-            updateSleevesColor(color) {
-                this.sleevesColors[this.currentSection] = color;
-                this.updateJacketColors();
             }
 
             // Crop Modal Functions
@@ -1419,8 +1518,7 @@
                     const design = {
                         patches: this.patches,
                         texts: this.texts,
-                        jacketColors: this.jacketColors,
-                        sleevesColors: this.sleevesColors,
+                        currentJacket: this.currentJacket,
                         timestamp: new Date().toISOString()
                     };
                     localStorage.setItem('jacketDesign', JSON.stringify(design));
@@ -1439,11 +1537,11 @@
                         const design = JSON.parse(saved);
                         this.patches = design.patches || { front: [], back: [] };
                         this.texts = design.texts || { front: [], back: [] };
-                        this.jacketColors = design.jacketColors || { front: '#1a1a1a', back: '#1a1a1a' };
-                        this.sleevesColors = design.sleevesColors || { front: '#2d3748', back: '#2d3748' };
+                        this.currentJacket = design.currentJacket || 'black';
                         this.updatePatches();
                         this.updateTexts();
-                        this.updateJacketColors();
+                        this.setupJacketOptions();
+                        this.updateJacketImages();
                         this.showNotification('Design loaded successfully!', 'success');
                     }
                 } catch (error) {
@@ -1452,29 +1550,66 @@
                 }
             }
 
-            // Export final design as image
+            // Export final design as image - FIXED VERSION
             exportDesign() {
                 this.toggleLoading(true);
                 
                 const jacketSection = document.getElementById(`${this.currentSection}-section`);
                 
-                html2canvas(jacketSection, {
+                // Create a temporary container to ensure everything renders correctly
+                const tempContainer = document.createElement('div');
+                tempContainer.style.position = 'fixed';
+                tempContainer.style.left = '-9999px';
+                tempContainer.style.top = '0';
+                tempContainer.style.width = jacketSection.offsetWidth + 'px';
+                tempContainer.style.height = jacketSection.offsetHeight + 'px';
+                tempContainer.style.background = 'white';
+                tempContainer.style.zIndex = '9999';
+                
+                // Clone the jacket section
+                const clone = jacketSection.cloneNode(true);
+                clone.style.opacity = '1';
+                clone.style.position = 'relative';
+                clone.style.width = '100%';
+                clone.style.height = '100%';
+                
+                tempContainer.appendChild(clone);
+                document.body.appendChild(tempContainer);
+                
+                // Use html2canvas with better configuration
+                html2canvas(clone, {
                     backgroundColor: null,
-                    scale: 2, // Higher resolution
+                    scale: 2,
                     useCORS: true,
                     logging: false,
-                    allowTaint: true,
-                    useCORS: true
+                    allowTaint: false,
+                    width: clone.offsetWidth,
+                    height: clone.offsetHeight,
+                    onclone: function(clonedDoc) {
+                        // Ensure all fonts are loaded in the clone
+                        const elements = clonedDoc.querySelectorAll('.text-patch');
+                        elements.forEach(el => {
+                            el.style.fontFamily = getComputedStyle(el).fontFamily;
+                        });
+                    }
                 }).then(canvas => {
+                    // Create download link
                     const link = document.createElement('a');
-                    link.download = `od-jacket-design-${this.currentSection}.png`;
+                    link.download = `senior-jacket-design-${this.currentSection}-${Date.now()}.png`;
                     link.href = canvas.toDataURL('image/png', 1.0);
+                    
+                    // Trigger download
+                    document.body.appendChild(link);
                     link.click();
+                    document.body.removeChild(link);
+                    
                     this.showNotification('Design exported successfully!', 'success');
                 }).catch(error => {
                     console.error('Error exporting design:', error);
                     this.showNotification('Error exporting design. Please try again.', 'error');
                 }).finally(() => {
+                    // Clean up
+                    document.body.removeChild(tempContainer);
                     this.toggleLoading(false);
                 });
             }
@@ -1559,16 +1694,8 @@
             element.classList.add('active');
         }
 
-        function selectJacketColor(element, color) {
-            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
-            element.classList.add('active');
-            jacketCustomizer.updateJacketColor(color);
-        }
-
-        function selectSleevesColor(element, color) {
-            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
-            element.classList.add('active');
-            jacketCustomizer.updateSleevesColor(color);
+        function selectJacket(color) {
+            jacketCustomizer.selectJacket(color);
         }
 
         function toggleMobileMenu() {
@@ -1577,7 +1704,7 @@
         }
 
         function shareToWhatsApp() {
-            const text = "Check out this free jacket designer! ";
+            const text = "Check out this free senior jacket designer! Create your custom jacket design! ";
             const url = window.location.href;
             window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`);
         }
@@ -1589,3 +1716,18 @@
     </script>
 </body>
 </html>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
