@@ -1,12 +1,12 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OD | Senior Jacket Couture</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Comprehensive Google Fonts for Senior Jackets -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Anton&family=Archivo+Black&family=Black+Ops+One&family=Russo+One&family=Orbitron:wght@400;500;600;700&family=Audiowide&family=Permanent+Marker&family=Rock+Salt&family=Press+Start+2P&family=Monoton&family=Iceberg&family=Plaster&family=Stardos+Stencil:wght@400;700&family=Abril+Fatface&family=Playfair+Display:wght@400;700&family=Pacifico&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Allura&family=Mr+De+Haviland&family=Brush+Script+MT&family=Lucida+Handwriting&family=Franklin+Gothic+Heavy&family=Cooper+Black&family=Impact&family=Arial+Black&family=Rockwell&display=swap" rel="stylesheet">
+    <!-- Formal Google Fonts + Arabic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&family=Merriweather:wght@300;400;700&family=Cardo:wght@400;700&family=Abril+Fatface&family=Prata&family=Old+Standard+TT:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Unna:wght@400;700&family=Bodoni+Moda:wght@400;500;600;700&family=DM+Serif+Display&family=IM+Fell+English&family=Gilda+Display&family=Marcellus&family=Taviraj:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Lateef:wght@400;700&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=El+Messiri:wght@400;500;600;700&family=Reem+Kufi:wght@400;500;600;700&family=Markazi+Text:wght@400;500;600;700&family=Almarai:wght@300;400;700;800&family=Tajawal:wght@300;400;500;700;800&family=Changa:wght@300;400;500;600;700;800&family=Jomhuria&family=Rakkas&family=Mada:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.17/dist/interact.min.js"></script>
@@ -75,7 +75,7 @@
         }
         
         .logo {
-            font-family: 'Bebas Neue', cursive;
+            font-family: 'Playfair Display', serif;
             font-weight: 600;
             letter-spacing: 1px;
         }
@@ -115,11 +115,14 @@
         
         .patch {
             position: absolute;
-            background-size: cover;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             cursor: move;
             display: none;
             transition: transform 0.2s ease;
             touch-action: none;
+            background-color: transparent;
         }
         
         .patch.draggable {
@@ -136,6 +139,9 @@
             border-radius: 4px;
             user-select: none;
             white-space: nowrap;
+            background-color: transparent;
+            resize: both;
+            overflow: hidden;
         }
         
         .text-patch.draggable {
@@ -423,7 +429,7 @@
             align-items: center;
             justify-content: center;
             color: var(--od-offwhite);
-            font-family: 'Bebas Neue', cursive;
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: 18px;
         }
@@ -588,36 +594,42 @@
             }
         }
 
-        /* Font preview classes - EXPANDED */
-        .font-bebas { font-family: 'Bebas Neue', cursive; }
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        .font-anton { font-family: 'Anton', sans-serif; }
-        .font-archivo { font-family: 'Archivo Black', sans-serif; }
-        .font-blackops { font-family: 'Black Ops One', cursive; }
-        .font-russo { font-family: 'Russo One', sans-serif; }
-        .font-orbitron { font-family: 'Orbitron', sans-serif; }
-        .font-audiowide { font-family: 'Audiowide', cursive; }
-        .font-permanent { font-family: 'Permanent Marker', cursive; }
-        .font-rocksalt { font-family: 'Rock Salt', cursive; }
-        .font-pressstart { font-family: 'Press Start 2P', cursive; }
-        .font-monoton { font-family: 'Monoton', cursive; }
-        .font-iceberg { font-family: 'Iceberg', cursive; }
-        .font-plaster { font-family: 'Plaster', cursive; }
-        .font-stardos { font-family: 'Stardos Stencil', cursive; }
-        .font-abril { font-family: 'Abril Fatface', cursive; }
+        /* Font preview classes - FORMAL + ARABIC */
         .font-playfair { font-family: 'Playfair Display', serif; }
-        .font-pacifico { font-family: 'Pacifico', cursive; }
-        .font-dancing { font-family: 'Dancing Script', cursive; }
-        .font-greatvibes { font-family: 'Great Vibes', cursive; }
-        .font-allura { font-family: 'Allura', cursive; }
-        .font-mrdehaviland { font-family: 'Mr De Haviland', cursive; }
-        .font-brush { font-family: 'Brush Script MT', cursive; }
-        .font-lucida { font-family: 'Lucida Handwriting', cursive; }
-        .font-franklin { font-family: 'Franklin Gothic Heavy', sans-serif; }
-        .font-cooper { font-family: 'Cooper Black', serif; }
-        .font-impact { font-family: Impact, sans-serif; }
-        .font-arial { font-family: Arial Black, sans-serif; }
-        .font-rockwell { font-family: Rockwell, serif; }
+        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-lora { font-family: 'Lora', serif; }
+        .font-source-serif { font-family: 'Source Serif Pro', serif; }
+        .font-merriweather { font-family: 'Merriweather', serif; }
+        .font-cardo { font-family: 'Cardo', serif; }
+        .font-abril { font-family: 'Abril Fatface', cursive; }
+        .font-prata { font-family: 'Prata', serif; }
+        .font-old-standard { font-family: 'Old Standard TT', serif; }
+        .font-libre-baskerville { font-family: 'Libre Baskerville', serif; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-unna { font-family: 'Unna', serif; }
+        .font-bodoni { font-family: 'Bodoni Moda', serif; }
+        .font-dm-serif { font-family: 'DM Serif Display', serif; }
+        .font-im-fell { font-family: 'IM Fell English', serif; }
+        .font-gilda { font-family: 'Gilda Display', serif; }
+        .font-marcellus { font-family: 'Marcellus', serif; }
+        .font-taviraj { font-family: 'Taviraj', serif; }
+        
+        /* Arabic Fonts */
+        .font-amiri { font-family: 'Amiri', serif; direction: rtl; }
+        .font-lateef { font-family: 'Lateef', serif; direction: rtl; }
+        .font-scheherazade { font-family: 'Scheherazade New', serif; direction: rtl; }
+        .font-noto-naskh { font-family: 'Noto Naskh Arabic', serif; direction: rtl; }
+        .font-noto-sans-arabic { font-family: 'Noto Sans Arabic', sans-serif; direction: rtl; }
+        .font-el-messiri { font-family: 'El Messiri', sans-serif; direction: rtl; }
+        .font-reem-kufi { font-family: 'Reem Kufi', sans-serif; direction: rtl; }
+        .font-markazi { font-family: 'Markazi Text', serif; direction: rtl; }
+        .font-almarai { font-family: 'Almarai', sans-serif; direction: rtl; }
+        .font-tajawal { font-family: 'Tajawal', sans-serif; direction: rtl; }
+        .font-changa { font-family: 'Changa', sans-serif; direction: rtl; }
+        .font-jomhuria { font-family: 'Jomhuria', cursive; direction: rtl; }
+        .font-rakkas { font-family: 'Rakkas', cursive; direction: rtl; }
+        .font-mada { font-family: 'Mada', sans-serif; direction: rtl; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -672,7 +684,7 @@
         <div class="flex flex-col lg:flex-row gap-6 md:gap-8">
             <!-- Design Area -->
             <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-6 md:p-8 border od-border">
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Bebas Neue', cursive;">Design Your Masterpiece</h2>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Playfair Display', serif;">Design Your Masterpiece</h2>
                 <p class="od-text-dark mb-6">Upload your personal imagery to create unique patches for your jacket.</p>
                 
                 <!-- Upload Section -->
@@ -695,42 +707,42 @@
                         <div>
                             <label class="block od-text-dark font-medium mb-2">Font Family:</label>
                             <div class="font-grid">
-                                <!-- Varsity/Block Fonts -->
-                                <div class="font-option active font-bebas" data-font="Bebas Neue" onclick="selectFont(this, 'Bebas Neue')">VARSITY</div>
-                                <div class="font-option font-oswald" data-font="Oswald" onclick="selectFont(this, 'Oswald')">OSWALD</div>
-                                <div class="font-option font-anton" data-font="Anton" onclick="selectFont(this, 'Anton')">ANTON</div>
-                                <div class="font-option font-archivo" data-font="Archivo Black" onclick="selectFont(this, 'Archivo Black')">ARCHIVO</div>
-                                <div class="font-option font-impact" data-font="Impact" onclick="selectFont(this, 'Impact')">IMPACT</div>
-                                <div class="font-option font-arial" data-font="Arial Black" onclick="selectFont(this, 'Arial Black')">ARIAL</div>
-                                <div class="font-option font-blackops" data-font="Black Ops One" onclick="selectFont(this, 'Black Ops One')">BLACK OPS</div>
-                                <div class="font-option font-russo" data-font="Russo One" onclick="selectFont(this, 'Russo One')">RUSSO</div>
+                                <!-- Formal Fonts -->
+                                <div class="font-option active font-playfair" data-font="Playfair Display" onclick="selectFont(this, 'Playfair Display')">Playfair</div>
+                                <div class="font-option font-cormorant" data-font="Cormorant Garamond" onclick="selectFont(this, 'Cormorant Garamond')">Cormorant</div>
+                                <div class="font-option font-montserrat" data-font="Montserrat" onclick="selectFont(this, 'Montserrat')">Montserrat</div>
+                                <div class="font-option font-lora" data-font="Lora" onclick="selectFont(this, 'Lora')">Lora</div>
+                                <div class="font-option font-source-serif" data-font="Source Serif Pro" onclick="selectFont(this, 'Source Serif Pro')">Source Serif</div>
+                                <div class="font-option font-merriweather" data-font="Merriweather" onclick="selectFont(this, 'Merriweather')">Merriweather</div>
+                                <div class="font-option font-cardo" data-font="Cardo" onclick="selectFont(this, 'Cardo')">Cardo</div>
+                                <div class="font-option font-abril" data-font="Abril Fatface" onclick="selectFont(this, 'Abril Fatface')">Abril</div>
+                                <div class="font-option font-prata" data-font="Prata" onclick="selectFont(this, 'Prata')">Prata</div>
+                                <div class="font-option font-old-standard" data-font="Old Standard TT" onclick="selectFont(this, 'Old Standard TT')">Old Standard</div>
+                                <div class="font-option font-libre-baskerville" data-font="Libre Baskerville" onclick="selectFont(this, 'Libre Baskerville')">Baskerville</div>
+                                <div class="font-option font-cinzel" data-font="Cinzel" onclick="selectFont(this, 'Cinzel')">Cinzel</div>
+                                <div class="font-option font-unna" data-font="Unna" onclick="selectFont(this, 'Unna')">Unna</div>
+                                <div class="font-option font-bodoni" data-font="Bodoni Moda" onclick="selectFont(this, 'Bodoni Moda')">Bodoni</div>
+                                <div class="font-option font-dm-serif" data-font="DM Serif Display" onclick="selectFont(this, 'DM Serif Display')">DM Serif</div>
+                                <div class="font-option font-im-fell" data-font="IM Fell English" onclick="selectFont(this, 'IM Fell English')">IM Fell</div>
+                                <div class="font-option font-gilda" data-font="Gilda Display" onclick="selectFont(this, 'Gilda Display')">Gilda</div>
+                                <div class="font-option font-marcellus" data-font="Marcellus" onclick="selectFont(this, 'Marcellus')">Marcellus</div>
+                                <div class="font-option font-taviraj" data-font="Taviraj" onclick="selectFont(this, 'Taviraj')">Taviraj</div>
                                 
-                                <!-- Tech/Modern Fonts -->
-                                <div class="font-option font-orbitron" data-font="Orbitron" onclick="selectFont(this, 'Orbitron')">ORBITRON</div>
-                                <div class="font-option font-audiowide" data-font="Audiowide" onclick="selectFont(this, 'Audiowide')">AUDIO</div>
-                                <div class="font-option font-pressstart" data-font="Press Start 2P" onclick="selectFont(this, 'Press Start 2P')">RETRO</div>
-                                <div class="font-option font-monoton" data-font="Monoton" onclick="selectFont(this, 'Monoton')">MONOTON</div>
-                                <div class="font-option font-iceberg" data-font="Iceberg" onclick="selectFont(this, 'Iceberg')">ICEBERG</div>
-                                <div class="font-option font-plaster" data-font="Plaster" onclick="selectFont(this, 'Plaster')">PLASTER</div>
-                                <div class="font-option font-stardos" data-font="Stardos Stencil" onclick="selectFont(this, 'Stardos Stencil')">STENCIL</div>
-                                
-                                <!-- Script & Elegant Fonts -->
-                                <div class="font-option font-brush" data-font="Brush Script MT" onclick="selectFont(this, 'Brush Script MT')">BRUSH</div>
-                                <div class="font-option font-lucida" data-font="Lucida Handwriting" onclick="selectFont(this, 'Lucida Handwriting')">LUCIDA</div>
-                                <div class="font-option font-pacifico" data-font="Pacifico" onclick="selectFont(this, 'Pacifico')">PACIFICO</div>
-                                <div class="font-option font-dancing" data-font="Dancing Script" onclick="selectFont(this, 'Dancing Script')">DANCING</div>
-                                <div class="font-option font-greatvibes" data-font="Great Vibes" onclick="selectFont(this, 'Great Vibes')">GREAT VIBES</div>
-                                <div class="font-option font-allura" data-font="Allura" onclick="selectFont(this, 'Allura')">ALLURA</div>
-                                <div class="font-option font-mrdehaviland" data-font="Mr De Haviland" onclick="selectFont(this, 'Mr De Haviland')">HAVILAND</div>
-                                <div class="font-option font-permanent" data-font="Permanent Marker" onclick="selectFont(this, 'Permanent Marker')">MARKER</div>
-                                <div class="font-option font-rocksalt" data-font="Rock Salt" onclick="selectFont(this, 'Rock Salt')">ROCK SALT</div>
-                                
-                                <!-- Classic Fonts -->
-                                <div class="font-option font-franklin" data-font="Franklin Gothic Heavy" onclick="selectFont(this, 'Franklin Gothic Heavy')">FRANKLIN</div>
-                                <div class="font-option font-cooper" data-font="Cooper Black" onclick="selectFont(this, 'Cooper Black')">COOPER</div>
-                                <div class="font-option font-rockwell" data-font="Rockwell" onclick="selectFont(this, 'Rockwell')">ROCKWELL</div>
-                                <div class="font-option font-abril" data-font="Abril Fatface" onclick="selectFont(this, 'Abril Fatface')">ABRIL</div>
-                                <div class="font-option font-playfair" data-font="Playfair Display" onclick="selectFont(this, 'Playfair Display')">PLAYFAIR</div>
+                                <!-- Arabic Fonts -->
+                                <div class="font-option font-amiri" data-font="Amiri" onclick="selectFont(this, 'Amiri')">عربي - Amiri</div>
+                                <div class="font-option font-lateef" data-font="Lateef" onclick="selectFont(this, 'Lateef')">عربي - Lateef</div>
+                                <div class="font-option font-scheherazade" data-font="Scheherazade New" onclick="selectFont(this, 'Scheherazade New')">عربي - Scheherazade</div>
+                                <div class="font-option font-noto-naskh" data-font="Noto Naskh Arabic" onclick="selectFont(this, 'Noto Naskh Arabic')">عربي - Noto Naskh</div>
+                                <div class="font-option font-noto-sans-arabic" data-font="Noto Sans Arabic" onclick="selectFont(this, 'Noto Sans Arabic')">عربي - Noto Sans</div>
+                                <div class="font-option font-el-messiri" data-font="El Messiri" onclick="selectFont(this, 'El Messiri')">عربي - El Messiri</div>
+                                <div class="font-option font-reem-kufi" data-font="Reem Kufi" onclick="selectFont(this, 'Reem Kufi')">عربي - Reem Kufi</div>
+                                <div class="font-option font-markazi" data-font="Markazi Text" onclick="selectFont(this, 'Markazi Text')">عربي - Markazi</div>
+                                <div class="font-option font-almarai" data-font="Almarai" onclick="selectFont(this, 'Almarai')">عربي - Almarai</div>
+                                <div class="font-option font-tajawal" data-font="Tajawal" onclick="selectFont(this, 'Tajawal')">عربي - Tajawal</div>
+                                <div class="font-option font-changa" data-font="Changa" onclick="selectFont(this, 'Changa')">عربي - Changa</div>
+                                <div class="font-option font-jomhuria" data-font="Jomhuria" onclick="selectFont(this, 'Jomhuria')">عربي - Jomhuria</div>
+                                <div class="font-option font-rakkas" data-font="Rakkas" onclick="selectFont(this, 'Rakkas')">عربي - Rakkas</div>
+                                <div class="font-option font-mada" data-font="Mada" onclick="selectFont(this, 'Mada')">عربي - Mada</div>
                             </div>
                         </div>
                         
@@ -790,7 +802,7 @@
 
             <!-- Mockup Area -->
             <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-6 md:p-8 border od-border">
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Bebas Neue', cursive;">Jacket Preview</h2>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Playfair Display', serif;">Jacket Preview</h2>
                 <p class="od-text-dark mb-6">Visualize your custom design in real-time.</p>
                 
                 <!-- Section Toggle Buttons -->
@@ -801,8 +813,8 @@
                 
                 <!-- Jacket Container -->
                 <div class="jacket-container" id="jacket-container">
-                    <div class="jacket-section active" id="front-section" style="background-image: url('https://via.placeholder.com/600x800/1a1a1a/ffffff?text=Front+Jacket');"></div>
-                    <div class="jacket-section" id="back-section" style="background-image: url('https://via.placeholder.com/600x800/1a1a1a/ffffff?text=Back+Jacket');"></div>
+                    <div class="jacket-section active" id="front-section" style="background-image: url('select.png');"></div>
+                    <div class="jacket-section" id="back-section" style="background-image: url('select.png');"></div>
                 </div>
 
                 <!-- Mobile Instructions -->
@@ -869,7 +881,7 @@
     </div>
 
     <script>
-        // Jacket image data - REPLACE THESE URLs WITH YOUR ACTUAL JACKET IMAGES
+        // Jacket image data - KEEPING ORIGINAL IMAGE NAMES
         const jacketImages = {
             'black': {
                 front: 'Untitled-1.png',
@@ -1097,6 +1109,18 @@
                 el.style.color = text.color;
                 el.style.fontWeight = text.bold ? 'bold' : 'normal';
                 el.style.fontStyle = text.italic ? 'italic' : 'normal';
+                
+                // Handle RTL for Arabic fonts
+                if (text.fontFamily.includes('Amiri') || text.fontFamily.includes('Lateef') || 
+                    text.fontFamily.includes('Scheherazade') || text.fontFamily.includes('Noto') ||
+                    text.fontFamily.includes('El Messiri') || text.fontFamily.includes('Reem Kufi') ||
+                    text.fontFamily.includes('Markazi') || text.fontFamily.includes('Almarai') ||
+                    text.fontFamily.includes('Tajawal') || text.fontFamily.includes('Changa') ||
+                    text.fontFamily.includes('Jomhuria') || text.fontFamily.includes('Rakkas') ||
+                    text.fontFamily.includes('Mada')) {
+                    el.style.direction = 'rtl';
+                    el.style.textAlign = 'right';
+                }
                 
                 // Add rotation if it exists
                 if (text.rotation) {
@@ -1366,7 +1390,7 @@
                 return tempCanvas.toDataURL('image/png', 1.0);
             }
 
-            // Draggable and Resizable Functionality
+            // Draggable and Resizable Functionality - FIXED VERSION
             makeDraggableAndResizable(element) {
                 // Draggable with touch support
                 interact(element).draggable({
@@ -1398,7 +1422,7 @@
                     ]
                 });
 
-                // Resizable with fixed aspect ratio and touch support (only for patches)
+                // Resizable with fixed aspect ratio and touch support for patches
                 if (element.classList.contains('patch')) {
                     interact(element).resizable({
                         edges: { left: true, right: true, bottom: true, top: true },
@@ -1433,6 +1457,48 @@
                             interact.modifiers.restrictSize({
                                 min: { width: 20, height: 20 },
                                 max: { width: 200, height: 200 }
+                            }),
+                            interact.modifiers.restrictEdges({
+                                outer: 'parent'
+                            })
+                        ]
+                    });
+                }
+
+                // Resizable for text elements - NEW FEATURE
+                if (element.classList.contains('text-patch')) {
+                    interact(element).resizable({
+                        edges: { left: true, right: true, bottom: true, top: true },
+                        listeners: {
+                            move: (event) => {
+                                const target = event.target;
+                                let x = parseFloat(target.style.left) || 0;
+                                let y = parseFloat(target.style.top) || 0;
+
+                                target.style.width = event.rect.width + 'px';
+                                target.style.height = event.rect.height + 'px';
+
+                                x += event.deltaRect.left;
+                                y += event.deltaRect.top;
+
+                                const sectionRect = target.parentElement.getBoundingClientRect();
+                                const maxLeft = sectionRect.width - event.rect.width;
+                                const maxTop = sectionRect.height - event.rect.height;
+
+                                x = Math.max(0, Math.min(x, maxLeft));
+                                y = Math.max(0, Math.min(y, maxTop));
+
+                                target.style.left = x + 'px';
+                                target.style.top = y + 'px';
+
+                                // Update size in data
+                                this.updateTextSize(target.id, target.style.width, target.style.height);
+                            }
+                        },
+                        modifiers: [
+                            interact.modifiers.restrictSize({
+                                min: { width: 50, height: 20 },
+                                max: { width: 300, height: 100 }
                             }),
                             interact.modifiers.restrictEdges({
                                 outer: 'parent'
@@ -1479,6 +1545,16 @@
                 if (patchIndex !== -1) {
                     this.patches[this.currentSection][patchIndex].width = width;
                     this.patches[this.currentSection][patchIndex].height = height;
+                }
+            }
+
+            // Update text size in data - NEW METHOD
+            updateTextSize(textId, width, height) {
+                const textIndex = this.texts[this.currentSection].findIndex(t => t.id === textId);
+                if (textIndex !== -1) {
+                    // For text, we're storing the actual dimensions
+                    this.texts[this.currentSection][textIndex].width = width;
+                    this.texts[this.currentSection][textIndex].height = height;
                 }
             }
 
@@ -1716,18 +1792,11 @@
     </script>
 </body>
 </html>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
