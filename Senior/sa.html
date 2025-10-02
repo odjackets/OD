@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OD | Senior Jacket Couture</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.17/dist/interact.min.js"></script>
@@ -26,6 +26,7 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--od-cream);
             color: var(--od-charcoal);
+            touch-action: manipulation;
         }
         
         .od-bg-cream {
@@ -67,7 +68,7 @@
         .hero {
             position: relative;
             overflow: hidden;
-            padding: 80px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, var(--od-offwhite) 0%, var(--od-beige) 100%);
             border-bottom: 1px solid var(--od-taupe);
         }
@@ -82,11 +83,11 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            height: 500px;
+            height: 400px;
             margin: 0 auto;
             background: var(--od-offwhite);
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             border: 1px solid var(--od-taupe);
@@ -103,7 +104,7 @@
             background-position: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            padding: 20px;
+            padding: 15px;
         }
         
         .jacket-section.active {
@@ -117,18 +118,35 @@
             cursor: move;
             display: none;
             transition: transform 0.2s ease;
+            touch-action: none;
         }
         
         .patch.draggable {
             display: block;
         }
         
-        .patch:hover {
+        .text-patch {
+            position: absolute;
+            cursor: move;
+            display: none;
+            transition: transform 0.2s ease;
+            touch-action: none;
+            padding: 5px;
+            border-radius: 4px;
+            user-select: none;
+            white-space: nowrap;
+        }
+        
+        .text-patch.draggable {
+            display: block;
+        }
+        
+        .patch:hover, .text-patch:hover {
             transform: scale(1.05);
             z-index: 10;
         }
         
-        .patch.selected {
+        .patch.selected, .text-patch.selected {
             box-shadow: 0 0 0 2px var(--od-gold);
         }
         
@@ -141,7 +159,7 @@
             z-index: 20;
         }
         
-        .patch.selected .patch-controls {
+        .patch.selected .patch-controls, .text-patch.selected .patch-controls {
             display: flex;
         }
         
@@ -185,7 +203,7 @@
             z-index: 20;
         }
         
-        .patch.selected .delete-btn {
+        .patch.selected .delete-btn, .text-patch.selected .delete-btn {
             display: flex;
         }
         
@@ -217,10 +235,11 @@
             color: var(--od-charcoal);
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 6px;
             border: 1px solid var(--od-taupe);
             transition: all 0.3s ease;
+            width: 100%;
         }
         
         .custom-btn:hover {
@@ -249,16 +268,17 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
         
         .modal-content {
             background: var(--od-offwhite);
-            padding: 24px;
+            padding: 20px;
             border-radius: 12px;
             max-width: 600px;
-            width: 90%;
+            width: 100%;
             position: relative;
-            max-height: 80vh;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -281,6 +301,7 @@
             font-size: 24px;
             cursor: pointer;
             color: var(--od-charcoal);
+            z-index: 1001;
         }
         
         .cropper-container {
@@ -289,6 +310,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
         
         .crop-controls {
@@ -358,15 +380,17 @@
             to { transform: rotate(360deg); }
         }
         
-        input, select {
+        input, select, textarea {
             background: var(--od-offwhite);
             border: 1px solid var(--od-taupe);
             color: var(--od-charcoal);
             border-radius: 6px;
-            padding: 10px 12px;
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
         }
         
-        input:focus, select:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--od-gold);
         }
@@ -378,8 +402,8 @@
         }
         
         .checkbox-container input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             accent-color: var(--od-gold);
         }
         
@@ -402,15 +426,138 @@
             font-weight: 700;
             font-size: 18px;
         }
+
+        /* Color picker styles */
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
         
+        .color-option:hover, .color-option.active {
+            transform: scale(1.1);
+            border-color: var(--od-gold);
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        /* Text editor styles */
+        .font-option {
+            padding: 8px 12px;
+            border: 1px solid var(--od-taupe);
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .font-option:hover, .font-option.active {
+            background: var(--od-gold);
+            color: var(--od-offwhite);
+        }
+        
+        .font-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        /* Mobile-specific improvements */
+        .mobile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .mobile-btn {
+            padding: 12px;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        /* Touch-friendly improvements */
         @media (max-width: 768px) {
-            .jacket-container {
-                height: 400px;
+            .hero {
+                padding: 40px 0;
             }
             
-            .modal-content {
-                width: 95%;
-                margin: 10px;
+            .jacket-container {
+                height: 300px;
+                padding: 10px;
+            }
+            
+            .jacket-section {
+                padding: 10px;
+            }
+            
+            .custom-btn {
+                padding: 15px;
+                font-size: 16px;
+            }
+            
+            .section-btn {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .control-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .delete-btn {
+                width: 25px;
+                height: 25px;
+                font-size: 16px;
+            }
+            
+            .patch-controls {
+                top: -40px;
+            }
+            
+            h1 {
+                font-size: 2rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .color-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .font-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .jacket-container {
+                height: 250px;
+            }
+            
+            .hero {
+                padding: 30px 0;
+            }
+            
+            h1 {
+                font-size: 1.75rem !important;
             }
         }
     </style>
@@ -426,11 +573,11 @@
     
     <!-- Header -->
     <header class="od-bg-offwhite border-b od-border">
-        <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <div class="logo-container">
                     <div class="logo-symbol">OD</div>
-                    <div class="logo text-2xl od-accent">OD COUTURE</div>
+                    <div class="logo text-xl md:text-2xl od-accent">OD COUTURE</div>
                 </div>
                 <nav class="hidden md:flex space-x-8">
                     <a href="#" class="od-text-dark hover:od-accent transition">Collections</a>
@@ -438,58 +585,171 @@
                     <a href="#" class="od-text-dark hover:od-accent transition">About</a>
                     <a href="#" class="od-text-dark hover:od-accent transition">Contact</a>
                 </nav>
-                <button class="md:hidden od-text-dark">
+                <button class="md:hidden od-text-dark" onclick="toggleMobileMenu()">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden mt-4 hidden">
+                <div class="flex flex-col space-y-3">
+                    <a href="#" class="od-text-dark hover:od-accent transition py-2">Collections</a>
+                    <a href="#" class="od-text-dark hover:od-accent transition py-2">Customize</a>
+                    <a href="#" class="od-text-dark hover:od-accent transition py-2">About</a>
+                    <a href="#" class="od-text-dark hover:od-accent transition py-2">Contact</a>
+                </div>
+            </div>
         </div>
     </header>
     
     <div class="hero">
-        <div class="container mx-auto text-center relative z-10">
-            <h1 class="text-5xl font-bold mb-4 logo od-text-dark">Senior Jacket Couture</h1>
-            <p class="text-xl od-text-dark max-w-2xl mx-auto">Craft your legacy with premium custom jackets that define your journey</p>
+        <div class="container mx-auto text-center relative z-10 px-4">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 logo od-text-dark">Senior Jacket Couture</h1>
+            <p class="text-lg md:text-xl od-text-dark max-w-2xl mx-auto">Craft your legacy with premium custom jackets that define your journey</p>
         </div>
     </div>
     
-    <div class="container mx-auto p-6 max-w-6xl mt-8">
-        <div class="flex flex-col lg:flex-row gap-8">
+    <div class="container mx-auto p-4 md:p-6 max-w-6xl mt-6 md:mt-8">
+        <div class="flex flex-col lg:flex-row gap-6 md:gap-8">
             <!-- Design Area -->
-            <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-8 border od-border">
-                <h2 class="text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Cormorant Garamond', serif;">Design Your Masterpiece</h2>
+            <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-6 md:p-8 border od-border">
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Cormorant Garamond', serif;">Design Your Masterpiece</h2>
                 <p class="od-text-dark mb-6">Upload your personal imagery to create unique patches for your jacket.</p>
                 
                 <!-- Upload Section -->
                 <div class="mb-6">
                     <label class="block od-text-dark font-medium mb-2">Upload Your Custom Patch:</label>
                     <input type="file" id="patchUpload" accept="image/*" class="mb-4 p-2 border od-border rounded-lg w-full">
-                    <button onclick="openCropModal()" class="custom-btn accent w-full">Add Patch</button>
+                    <button onclick="openCropModal()" class="custom-btn accent">Add Patch</button>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-8">
+                <!-- Text Editor Section -->
+                <div class="mb-6 border-t pt-6 border-od-taupe">
+                    <h3 class="text-xl font-semibold mb-4 od-text-dark">Add Custom Text</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block od-text-dark font-medium mb-2">Text Content:</label>
+                            <input type="text" id="textContent" placeholder="Enter your text here" class="p-2 border od-border rounded-lg w-full">
+                        </div>
+                        
+                        <div>
+                            <label class="block od-text-dark font-medium mb-2">Font Family:</label>
+                            <div class="font-grid">
+                                <div class="font-option active" data-font="Inter" onclick="selectFont(this, 'Inter')">Inter</div>
+                                <div class="font-option" data-font="Poppins" onclick="selectFont(this, 'Poppins')">Poppins</div>
+                                <div class="font-option" data-font="Roboto" onclick="selectFont(this, 'Roboto')">Roboto</div>
+                                <div class="font-option" data-font="Montserrat" onclick="selectFont(this, 'Montserrat')">Montserrat</div>
+                                <div class="font-option" data-font="Playfair Display" onclick="selectFont(this, 'Playfair Display')">Playfair</div>
+                                <div class="font-option" data-font="Cormorant Garamond" onclick="selectFont(this, 'Cormorant Garamond')">Cormorant</div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block od-text-dark font-medium mb-2">Text Size:</label>
+                                <input type="range" id="textSize" min="12" max="72" value="24" class="w-full">
+                                <div class="text-center text-sm od-text-dark" id="textSizeValue">24px</div>
+                            </div>
+                            
+                            <div>
+                                <label class="block od-text-dark font-medium mb-2">Text Color:</label>
+                                <input type="color" id="textColor" value="#000000" class="w-full h-10 rounded border od-border">
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="textBold">
+                            <label for="textBold" class="od-text-dark">Bold Text</label>
+                        </div>
+                        
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="textItalic">
+                            <label for="textItalic" class="od-text-dark">Italic Text</label>
+                        </div>
+                        
+                        <button onclick="addTextToJacket()" class="custom-btn accent w-full">Add Text to Jacket</button>
+                    </div>
+                </div>
+
+                <!-- Jacket Color Customization -->
+                <div class="mb-6 border-t pt-6 border-od-taupe">
+                    <h3 class="text-xl font-semibold mb-4 od-text-dark">Jacket Colors</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block od-text-dark font-medium mb-2">Jacket Body Color:</label>
+                            <div class="color-grid">
+                                <div class="color-option active" style="background-color: #1a1a1a;" onclick="selectJacketColor(this, '#1a1a1a')"></div>
+                                <div class="color-option" style="background-color: #2d3748;" onclick="selectJacketColor(this, '#2d3748')"></div>
+                                <div class="color-option" style="background-color: #4a5568;" onclick="selectJacketColor(this, '#4a5568')"></div>
+                                <div class="color-option" style="background-color: #718096;" onclick="selectJacketColor(this, '#718096')"></div>
+                                <div class="color-option" style="background-color: #2c5282;" onclick="selectJacketColor(this, '#2c5282')"></div>
+                                <div class="color-option" style="background-color: #2d5a27;" onclick="selectJacketColor(this, '#2d5a27')"></div>
+                                <div class="color-option" style="background-color: #744210;" onclick="selectJacketColor(this, '#744210')"></div>
+                                <div class="color-option" style="background-color: #702459;" onclick="selectJacketColor(this, '#702459')"></div>
+                                <div class="color-option" style="background-color: #1a202c;" onclick="selectJacketColor(this, '#1a202c')"></div>
+                                <div class="color-option" style="background-color: #e53e3e;" onclick="selectJacketColor(this, '#e53e3e')"></div>
+                                <div class="color-option" style="background-color: #dd6b20;" onclick="selectJacketColor(this, '#dd6b20')"></div>
+                                <div class="color-option" style="background-color: #38a169;" onclick="selectJacketColor(this, '#38a169')"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block od-text-dark font-medium mb-2">Sleeves Color:</label>
+                            <div class="color-grid">
+                                <div class="color-option active" style="background-color: #2d3748;" onclick="selectSleevesColor(this, '#2d3748')"></div>
+                                <div class="color-option" style="background-color: #1a1a1a;" onclick="selectSleevesColor(this, '#1a1a1a')"></div>
+                                <div class="color-option" style="background-color: #4a5568;" onclick="selectSleevesColor(this, '#4a5568')"></div>
+                                <div class="color-option" style="background-color: #718096;" onclick="selectSleevesColor(this, '#718096')"></div>
+                                <div class="color-option" style="background-color: #2c5282;" onclick="selectSleevesColor(this, '#2c5282')"></div>
+                                <div class="color-option" style="background-color: #2d5a27;" onclick="selectSleevesColor(this, '#2d5a27')"></div>
+                                <div class="color-option" style="background-color: #744210;" onclick="selectSleevesColor(this, '#744210')"></div>
+                                <div class="color-option" style="background-color: #702459;" onclick="selectSleevesColor(this, '#702459')"></div>
+                                <div class="color-option" style="background-color: #1a202c;" onclick="selectSleevesColor(this, '#1a202c')"></div>
+                                <div class="color-option" style="background-color: #e53e3e;" onclick="selectSleevesColor(this, '#e53e3e')"></div>
+                                <div class="color-option" style="background-color: #dd6b20;" onclick="selectSleevesColor(this, '#dd6b20')"></div>
+                                <div class="color-option" style="background-color: #38a169;" onclick="selectSleevesColor(this, '#38a169')"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                     <button onclick="clearPatches()" class="custom-btn border-red-300 text-red-700 hover:bg-red-50">Reset Design</button>
                     <button onclick="saveDesign()" class="custom-btn accent">Save Design</button>
-                    <button onclick="exportDesign()" class="custom-btn col-span-2 accent">Export Final Design</button>
+                    <button onclick="exportDesign()" class="custom-btn md:col-span-2 accent">Export Final Design</button>
+                </div>
+
+                <!-- Mobile Quick Actions -->
+                <div class="mobile-actions md:hidden">
+                    <button onclick="switchSection('front')" class="custom-btn accent mobile-btn">Front</button>
+                    <button onclick="switchSection('back')" class="custom-btn accent mobile-btn">Back</button>
                 </div>
             </div>
 
             <!-- Mockup Area -->
-            <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-8 border od-border">
-                <h2 class="text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Cormorant Garamond', serif;">Jacket Preview</h2>
+            <div class="w-full lg:w-1/2 od-bg-offwhite rounded-xl shadow-sm p-6 md:p-8 border od-border">
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 od-text-dark" style="font-family: 'Cormorant Garamond', serif;">Jacket Preview</h2>
                 <p class="od-text-dark mb-6">Visualize your custom design in real-time.</p>
                 
                 <!-- Section Toggle Buttons -->
-                <div class="flex justify-center gap-4 mb-6">
+                <div class="hidden md:flex justify-center gap-4 mb-6">
                     <button onclick="switchSection('front')" class="section-btn active">Front</button>
                     <button onclick="switchSection('back')" class="section-btn">Back</button>
                 </div>
                 
                 <!-- Jacket Container -->
                 <div class="jacket-container" id="jacket-container">
-                    <div class="jacket-section active" id="front-section" style="background-image: url('mockup.png.png');"></div>
-                    <div class="jacket-section" id="back-section" style="background-image: url('ec9c1b04-c1b0-40c4-8a83-2051778c97e1\ \(3\).png');"></div>
+                    <div class="jacket-section active" id="front-section" style="background-image: url('https://via.placeholder.com/600x800/1a1a1a/ffffff?text=Front+Jacket');"></div>
+                    <div class="jacket-section" id="back-section" style="background-image: url('https://via.placeholder.com/600x800/1a1a1a/ffffff?text=Back+Jacket');"></div>
+                </div>
+
+                <!-- Mobile Instructions -->
+                <div class="mt-4 text-sm od-text-light text-center md:hidden">
+                    <p>💡 Tap and hold patches to move them</p>
+                    <p>📱 Use two fingers to resize patches</p>
                 </div>
             </div>
         </div>
@@ -520,17 +780,17 @@
     </div>
 
     <!-- Footer -->
-    <footer class="od-bg-offwhite border-t od-border mt-16 py-8">
-        <div class="container mx-auto px-6">
+    <footer class="od-bg-offwhite border-t od-border mt-12 py-8">
+        <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="logo-container mb-4 md:mb-0">
                     <div class="logo-symbol">OD</div>
                     <div class="logo text-xl od-accent">OD COUTURE</div>
                 </div>
-                <div class="od-text-dark text-sm">
+                <div class="od-text-dark text-sm text-center md:text-left mb-4 md:mb-0">
                     &copy; 2025 OD Couture. All rights reserved.
                 </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
+                <div class="flex space-x-4">
                     <a href="#" class="od-text-dark hover:od-accent transition">Terms</a>
                     <a href="#" class="od-text-dark hover:od-accent transition">Privacy</a>
                     <a href="#" class="od-text-dark hover:od-accent transition">Contact</a>
@@ -539,11 +799,22 @@
         </div>
     </footer>
 
+    <!-- Share Buttons -->
+    <div class="fixed bottom-4 right-4 flex flex-col gap-2 z-50">
+        <button onclick="shareToWhatsApp()" class="bg-green-500 text-white p-3 rounded-full shadow-lg">
+            📱
+        </button>
+        <button onclick="shareLink()" class="bg-blue-500 text-white p-3 rounded-full shadow-lg">
+            🔗
+        </button>
+    </div>
+
     <script>
         // Main application class
         class JacketCustomizer {
             constructor() {
                 this.patchCounter = 0;
+                this.textCounter = 0;
                 this.currentSection = 'front';
                 this.cropper = null;
                 this.uploadedImageUrl = null;
@@ -551,6 +822,18 @@
                 this.patches = {
                     front: [],
                     back: []
+                };
+                this.texts = {
+                    front: [],
+                    back: []
+                };
+                this.jacketColors = {
+                    front: '#1a1a1a',
+                    back: '#1a1a1a'
+                };
+                this.sleevesColors = {
+                    front: '#2d3748',
+                    back: '#2d3748'
                 };
                 
                 this.init();
@@ -560,11 +843,41 @@
                 this.bindEvents();
                 this.switchSection('front');
                 this.loadDesign();
+                this.setupMobileInteractions();
+                this.setupTextControls();
             }
 
             bindEvents() {
                 document.getElementById('patchUpload').addEventListener('change', this.handleImageUpload.bind(this));
                 document.addEventListener('click', this.deselectPatches.bind(this));
+            }
+
+            setupMobileInteractions() {
+                // Prevent zoom on double tap
+                document.addEventListener('touchstart', function(e) {
+                    if (e.touches.length > 1) {
+                        e.preventDefault();
+                    }
+                }, { passive: false });
+
+                let lastTouchEnd = 0;
+                document.addEventListener('touchend', function(e) {
+                    const now = (new Date()).getTime();
+                    if (now - lastTouchEnd <= 300) {
+                        e.preventDefault();
+                    }
+                    lastTouchEnd = now;
+                }, false);
+            }
+
+            setupTextControls() {
+                // Update text size value display
+                const textSizeSlider = document.getElementById('textSize');
+                const textSizeValue = document.getElementById('textSizeValue');
+                
+                textSizeSlider.addEventListener('input', function() {
+                    textSizeValue.textContent = this.value + 'px';
+                });
             }
 
             handleImageUpload(e) {
@@ -600,9 +913,12 @@
                 document.querySelectorAll('.section-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
-                document.querySelector(`button[onclick="switchSection('${section}')"]`).classList.add('active');
+                const desktopBtn = document.querySelector(`button[onclick="switchSection('${section}')"]`);
+                if (desktopBtn) desktopBtn.classList.add('active');
                 
                 this.updatePatches();
+                this.updateTexts();
+                this.updateJacketColors();
             }
 
             // Update displayed patches for current section
@@ -611,6 +927,29 @@
                 this.patches[this.currentSection].forEach(patch => {
                     this.createPatchElement(patch);
                 });
+            }
+
+            // Update displayed texts for current section
+            updateTexts() {
+                document.querySelectorAll('.text-patch').forEach(text => text.remove());
+                this.texts[this.currentSection].forEach(text => {
+                    this.createTextElement(text);
+                });
+            }
+
+            // Update jacket colors
+            updateJacketColors() {
+                const jacketColor = this.jacketColors[this.currentSection];
+                const sleevesColor = this.sleevesColors[this.currentSection];
+                
+                // Update jacket preview (in a real app, you would update the actual jacket image)
+                // For now, we'll just update the placeholder background color
+                const jacketSections = document.querySelectorAll('.jacket-section');
+                jacketSections.forEach(section => {
+                    section.style.backgroundColor = jacketColor;
+                });
+                
+                this.showNotification('Jacket colors updated', 'info');
             }
 
             // Create patch element
@@ -629,6 +968,37 @@
                     el.style.transform = `rotate(${patch.rotation}deg)`;
                 }
                 
+                this.addPatchControls(el, patch.id);
+                this.makeDraggableAndResizable(el);
+                document.getElementById(`${this.currentSection}-section`).appendChild(el);
+            }
+
+            // Create text element
+            createTextElement(text) {
+                const el = document.createElement('div');
+                el.className = 'text-patch draggable';
+                el.id = text.id;
+                el.textContent = text.content;
+                el.style.left = text.left;
+                el.style.top = text.top;
+                el.style.fontFamily = text.fontFamily;
+                el.style.fontSize = text.fontSize + 'px';
+                el.style.color = text.color;
+                el.style.fontWeight = text.bold ? 'bold' : 'normal';
+                el.style.fontStyle = text.italic ? 'italic' : 'normal';
+                
+                // Add rotation if it exists
+                if (text.rotation) {
+                    el.style.transform = `rotate(${text.rotation}deg)`;
+                }
+                
+                this.addPatchControls(el, text.id);
+                this.makeDraggableAndResizable(el);
+                document.getElementById(`${this.currentSection}-section`).appendChild(el);
+            }
+
+            // Add controls to patches and texts
+            addPatchControls(el, id) {
                 // Create control buttons
                 const controls = document.createElement('div');
                 controls.className = 'patch-controls';
@@ -640,7 +1010,7 @@
                 rotateLeftBtn.title = 'Rotate Left';
                 rotateLeftBtn.onclick = (e) => {
                     e.stopPropagation();
-                    this.rotatePatch(patch.id, -15);
+                    this.rotateElement(id, -15);
                 };
                 
                 // Rotate right button
@@ -650,7 +1020,7 @@
                 rotateRightBtn.title = 'Rotate Right';
                 rotateRightBtn.onclick = (e) => {
                     e.stopPropagation();
-                    this.rotatePatch(patch.id, 15);
+                    this.rotateElement(id, 15);
                 };
                 
                 // Add buttons to controls
@@ -661,27 +1031,109 @@
                 const deleteBtn = document.createElement('button');
                 deleteBtn.className = 'delete-btn';
                 deleteBtn.innerHTML = '&times;';
-                deleteBtn.onclick = () => this.deletePatch(patch.id);
+                deleteBtn.onclick = () => this.deleteElement(id);
                 
                 el.appendChild(controls);
                 el.appendChild(deleteBtn);
-                
-                this.makeDraggableAndResizable(el);
-                document.getElementById(`${this.currentSection}-section`).appendChild(el);
             }
 
-            // Rotate patch
-            rotatePatch(patchId, degrees) {
-                const patchIndex = this.patches[this.currentSection].findIndex(p => p.id === patchId);
-                if (patchIndex !== -1) {
-                    const patch = this.patches[this.currentSection][patchIndex];
+            // Rotate element (patch or text)
+            rotateElement(elementId, degrees) {
+                // Check if it's a patch
+                let elementIndex = this.patches[this.currentSection].findIndex(p => p.id === elementId);
+                if (elementIndex !== -1) {
+                    const patch = this.patches[this.currentSection][elementIndex];
                     patch.rotation = (patch.rotation || 0) + degrees;
                     
-                    const patchElement = document.getElementById(patchId);
-                    if (patchElement) {
-                        patchElement.style.transform = `rotate(${patch.rotation}deg)`;
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        element.style.transform = `rotate(${patch.rotation}deg)`;
+                    }
+                    return;
+                }
+                
+                // Check if it's a text
+                elementIndex = this.texts[this.currentSection].findIndex(t => t.id === elementId);
+                if (elementIndex !== -1) {
+                    const text = this.texts[this.currentSection][elementIndex];
+                    text.rotation = (text.rotation || 0) + degrees;
+                    
+                    const element = document.getElementById(elementId);
+                    if (element) {
+                        element.style.transform = `rotate(${text.rotation}deg)`;
                     }
                 }
+            }
+
+            // Delete element (patch or text)
+            deleteElement(elementId) {
+                // Check if it's a patch
+                let elementIndex = this.patches[this.currentSection].findIndex(p => p.id === elementId);
+                if (elementIndex !== -1) {
+                    this.patches[this.currentSection].splice(elementIndex, 1);
+                    this.updatePatches();
+                    this.showNotification('Patch deleted', 'info');
+                    return;
+                }
+                
+                // Check if it's a text
+                elementIndex = this.texts[this.currentSection].findIndex(t => t.id === elementId);
+                if (elementIndex !== -1) {
+                    this.texts[this.currentSection].splice(elementIndex, 1);
+                    this.updateTexts();
+                    this.showNotification('Text deleted', 'info');
+                }
+            }
+
+            // Add text to jacket
+            addTextToJacket() {
+                const content = document.getElementById('textContent').value.trim();
+                if (!content) {
+                    this.showNotification('Please enter some text', 'error');
+                    return;
+                }
+                
+                const fontFamily = document.querySelector('.font-option.active').getAttribute('data-font');
+                const fontSize = parseInt(document.getElementById('textSize').value);
+                const color = document.getElementById('textColor').value;
+                const bold = document.getElementById('textBold').checked;
+                const italic = document.getElementById('textItalic').checked;
+                
+                this.textCounter++;
+                const textId = 'text-' + this.textCounter;
+                
+                const text = {
+                    id: textId,
+                    content: content,
+                    fontFamily: fontFamily,
+                    fontSize: fontSize,
+                    color: color,
+                    bold: bold,
+                    italic: italic,
+                    left: '50px',
+                    top: '100px',
+                    rotation: 0
+                };
+                
+                this.texts[this.currentSection].push(text);
+                this.createTextElement(text);
+                
+                // Clear the text input
+                document.getElementById('textContent').value = '';
+                
+                this.showNotification('Text added successfully!', 'success');
+            }
+
+            // Update jacket color
+            updateJacketColor(color) {
+                this.jacketColors[this.currentSection] = color;
+                this.updateJacketColors();
+            }
+
+            // Update sleeves color
+            updateSleevesColor(color) {
+                this.sleevesColors[this.currentSection] = color;
+                this.updateJacketColors();
             }
 
             // Crop Modal Functions
@@ -817,7 +1269,7 @@
 
             // Draggable and Resizable Functionality
             makeDraggableAndResizable(element) {
-                // Draggable
+                // Draggable with touch support
                 interact(element).draggable({
                     listeners: {
                         move: (event) => {
@@ -826,9 +1278,9 @@
                             let y = (parseFloat(target.style.top) || 0) + event.dy;
 
                             const sectionRect = target.parentElement.getBoundingClientRect();
-                            const patchRect = target.getBoundingClientRect();
-                            const maxLeft = sectionRect.width - patchRect.width;
-                            const maxTop = sectionRect.height - patchRect.height;
+                            const elementRect = target.getBoundingClientRect();
+                            const maxLeft = sectionRect.width - elementRect.width;
+                            const maxTop = sectionRect.height - elementRect.height;
 
                             x = Math.max(0, Math.min(x, maxLeft));
                             y = Math.max(0, Math.min(y, maxTop));
@@ -836,102 +1288,127 @@
                             target.style.left = x + 'px';
                             target.style.top = y + 'px';
 
-                            const patchIndex = this.patches[this.currentSection].findIndex(p => p.id === target.id);
-                            if (patchIndex !== -1) {
-                                this.patches[this.currentSection][patchIndex].left = target.style.left;
-                                this.patches[this.currentSection][patchIndex].top = target.style.top;
-                            }
-                        }
-                    }
-                });
-
-                // Resizable with fixed aspect ratio
-                interact(element).resizable({
-                    edges: { left: true, right: true, bottom: true, top: true },
-                    preserveAspectRatio: true,
-                    listeners: {
-                        move: (event) => {
-                            const target = event.target;
-                            let x = parseFloat(target.style.left) || 0;
-                            let y = parseFloat(target.style.top) || 0;
-
-                            target.style.width = event.rect.width + 'px';
-                            target.style.height = event.rect.height + 'px';
-
-                            x += event.deltaRect.left;
-                            y += event.deltaRect.top;
-
-                            const sectionRect = target.parentElement.getBoundingClientRect();
-                            const maxLeft = sectionRect.width - event.rect.width;
-                            const maxTop = sectionRect.height - event.rect.height;
-
-                            x = Math.max(0, Math.min(x, maxLeft));
-                            y = Math.max(0, Math.min(y, maxTop));
-
-                            target.style.left = x + 'px';
-                            target.style.top = y + 'px';
-
-                            const patchIndex = this.patches[this.currentSection].findIndex(p => p.id === target.id);
-                            if (patchIndex !== -1) {
-                                this.patches[this.currentSection][patchIndex].left = target.style.left;
-                                this.patches[this.currentSection][patchIndex].top = target.style.top;
-                                this.patches[this.currentSection][patchIndex].width = target.style.width;
-                                this.patches[this.currentSection][patchIndex].height = target.style.height;
-                            }
+                            // Update position in data
+                            this.updateElementPosition(target.id, x, y);
                         }
                     },
                     modifiers: [
-                        interact.modifiers.restrictSize({
-                            min: { width: 20, height: 20 },
-                            max: { width: 200, height: 200 }
-                        }),
-                        interact.modifiers.restrictEdges({
-                            outer: 'parent'
+                        interact.modifiers.restrictRect({
+                            restriction: 'parent'
                         })
                     ]
                 });
 
-                // Select patch on click
+                // Resizable with fixed aspect ratio and touch support (only for patches)
+                if (element.classList.contains('patch')) {
+                    interact(element).resizable({
+                        edges: { left: true, right: true, bottom: true, top: true },
+                        preserveAspectRatio: true,
+                        listeners: {
+                            move: (event) => {
+                                const target = event.target;
+                                let x = parseFloat(target.style.left) || 0;
+                                let y = parseFloat(target.style.top) || 0;
+
+                                target.style.width = event.rect.width + 'px';
+                                target.style.height = event.rect.height + 'px';
+
+                                x += event.deltaRect.left;
+                                y += event.deltaRect.top;
+
+                                const sectionRect = target.parentElement.getBoundingClientRect();
+                                const maxLeft = sectionRect.width - event.rect.width;
+                                const maxTop = sectionRect.height - event.rect.height;
+
+                                x = Math.max(0, Math.min(x, maxLeft));
+                                y = Math.max(0, Math.min(y, maxTop));
+
+                                target.style.left = x + 'px';
+                                target.style.top = y + 'px';
+
+                                // Update size in data
+                                this.updatePatchSize(target.id, target.style.width, target.style.height);
+                            }
+                        },
+                        modifiers: [
+                            interact.modifiers.restrictSize({
+                                min: { width: 20, height: 20 },
+                                max: { width: 200, height: 200 }
+                            }),
+                            interact.modifiers.restrictEdges({
+                                outer: 'parent'
+                            })
+                        ]
+                    });
+                }
+
+                // Select element on click/tap
                 element.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    document.querySelectorAll('.patch').forEach(p => p.classList.remove('selected'));
+                    document.querySelectorAll('.patch, .text-patch').forEach(el => el.classList.remove('selected'));
                     element.classList.add('selected');
                     this.selectedPatch = element.id;
                 });
+
+                // Better touch handling for mobile
+                element.addEventListener('touchstart', (e) => {
+                    e.stopPropagation();
+                }, { passive: true });
             }
 
-            // Delete Patch
-            deletePatch(patchId) {
+            // Update element position in data
+            updateElementPosition(elementId, x, y) {
+                // Check if it's a patch
+                let elementIndex = this.patches[this.currentSection].findIndex(p => p.id === elementId);
+                if (elementIndex !== -1) {
+                    this.patches[this.currentSection][elementIndex].left = x + 'px';
+                    this.patches[this.currentSection][elementIndex].top = y + 'px';
+                    return;
+                }
+                
+                // Check if it's a text
+                elementIndex = this.texts[this.currentSection].findIndex(t => t.id === elementId);
+                if (elementIndex !== -1) {
+                    this.texts[this.currentSection][elementIndex].left = x + 'px';
+                    this.texts[this.currentSection][elementIndex].top = y + 'px';
+                }
+            }
+
+            // Update patch size in data
+            updatePatchSize(patchId, width, height) {
                 const patchIndex = this.patches[this.currentSection].findIndex(p => p.id === patchId);
                 if (patchIndex !== -1) {
-                    this.patches[this.currentSection].splice(patchIndex, 1);
-                    this.updatePatches();
-                    this.showNotification('Patch deleted', 'info');
+                    this.patches[this.currentSection][patchIndex].width = width;
+                    this.patches[this.currentSection][patchIndex].height = height;
                 }
             }
 
             // Clear Patches
             clearPatches() {
-                if (this.patches[this.currentSection].length === 0) {
-                    this.showNotification('No patches to clear', 'info');
+                if (this.patches[this.currentSection].length === 0 && this.texts[this.currentSection].length === 0) {
+                    this.showNotification('No patches or text to clear', 'info');
                     return;
                 }
                 
-                if (confirm('Are you sure you want to clear all patches from this section?')) {
+                if (confirm('Are you sure you want to clear all patches and text from this section?')) {
                     this.patches[this.currentSection] = [];
+                    this.texts[this.currentSection] = [];
                     this.updatePatches();
+                    this.updateTexts();
                     this.uploadedImageUrl = null;
                     document.getElementById('patchUpload').value = '';
                     this.selectedPatch = null;
-                    this.showNotification('All patches cleared', 'info');
+                    this.showNotification('All patches and text cleared', 'info');
                 }
             }
 
             // Deselect patch when clicking outside
             deselectPatches(e) {
-                if (!e.target.classList.contains('patch') && !e.target.classList.contains('delete-btn') && 
+                if (!e.target.classList.contains('patch') && 
+                    !e.target.classList.contains('text-patch') && 
+                    !e.target.classList.contains('delete-btn') && 
                     !e.target.classList.contains('control-btn')) {
-                    document.querySelectorAll('.patch').forEach(p => p.classList.remove('selected'));
+                    document.querySelectorAll('.patch, .text-patch').forEach(p => p.classList.remove('selected'));
                     this.selectedPatch = null;
                 }
             }
@@ -941,6 +1418,9 @@
                 try {
                     const design = {
                         patches: this.patches,
+                        texts: this.texts,
+                        jacketColors: this.jacketColors,
+                        sleevesColors: this.sleevesColors,
                         timestamp: new Date().toISOString()
                     };
                     localStorage.setItem('jacketDesign', JSON.stringify(design));
@@ -957,8 +1437,13 @@
                     const saved = localStorage.getItem('jacketDesign');
                     if (saved) {
                         const design = JSON.parse(saved);
-                        this.patches = design.patches;
+                        this.patches = design.patches || { front: [], back: [] };
+                        this.texts = design.texts || { front: [], back: [] };
+                        this.jacketColors = design.jacketColors || { front: '#1a1a1a', back: '#1a1a1a' };
+                        this.sleevesColors = design.sleevesColors || { front: '#2d3748', back: '#2d3748' };
                         this.updatePatches();
+                        this.updateTexts();
+                        this.updateJacketColors();
                         this.showNotification('Design loaded successfully!', 'success');
                     }
                 } catch (error) {
@@ -976,16 +1461,19 @@
                 html2canvas(jacketSection, {
                     backgroundColor: null,
                     scale: 2, // Higher resolution
+                    useCORS: true,
+                    logging: false,
+                    allowTaint: true,
                     useCORS: true
                 }).then(canvas => {
                     const link = document.createElement('a');
                     link.download = `od-jacket-design-${this.currentSection}.png`;
-                    link.href = canvas.toDataURL();
+                    link.href = canvas.toDataURL('image/png', 1.0);
                     link.click();
                     this.showNotification('Design exported successfully!', 'success');
                 }).catch(error => {
                     console.error('Error exporting design:', error);
-                    this.showNotification('Error exporting design', 'error');
+                    this.showNotification('Error exporting design. Please try again.', 'error');
                 }).finally(() => {
                     this.toggleLoading(false);
                 });
@@ -1061,5 +1549,43 @@
         function exportDesign() {
             jacketCustomizer.exportDesign();
         }
+
+        function addTextToJacket() {
+            jacketCustomizer.addTextToJacket();
+        }
+
+        function selectFont(element, font) {
+            document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function selectJacketColor(element, color) {
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
+            jacketCustomizer.updateJacketColor(color);
+        }
+
+        function selectSleevesColor(element, color) {
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
+            jacketCustomizer.updateSleevesColor(color);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function shareToWhatsApp() {
+            const text = "Check out this free jacket designer! ";
+            const url = window.location.href;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`);
+        }
+
+        function shareLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('Link copied to clipboard! Share it with your friends!');
+        }
     </script>
-</
+</body>
+</html>
