@@ -142,6 +142,7 @@
             background-color: transparent;
             resize: both;
             overflow: hidden;
+            transform-origin: center center;
         }
         
         .text-patch.draggable {
@@ -1497,11 +1498,16 @@
                     });
                 }
 
-                // Resizable for text elements - FIXED VERSION
+                // Resizable for text elements - FIXED VERSION (scales text instead of cropping)
                 if (element.classList.contains('text-patch')) {
                     interact(element).resizable({
                         edges: { left: true, right: true, bottom: true, top: true },
+                        preserveAspectRatio: false,
                         listeners: {
+                            start: (event) => {
+                                // Store original font size when starting resize
+                                event.target.dataset.originalFontSize = window.getComputedStyle(event.target).fontSize;
+                            },
                             move: (event) => {
                                 const target = event.target;
                                 let x = parseFloat(target.style.left) || 0;
@@ -1523,8 +1529,15 @@
                                 target.style.left = x + 'px';
                                 target.style.top = y + 'px';
 
+                                // Scale font size proportionally to width
+                                const originalFontSize = parseFloat(target.dataset.originalFontSize);
+                                const scaleFactor = event.rect.width / (parseFloat(target.dataset.originalWidth) || originalFontSize * 5);
+                                const newFontSize = Math.max(8, Math.min(164, originalFontSize * scaleFactor));
+                                
+                                target.style.fontSize = newFontSize + 'px';
+
                                 // Update size in data
-                                this.updateTextSize(target.id, target.style.width, target.style.height);
+                                this.updateTextSize(target.id, target.style.width, target.style.height, newFontSize);
                             }
                         },
                         modifiers: [
@@ -1546,6 +1559,12 @@
                     element.classList.add('selected');
                     this.selectedPatch = element.id;
                 });
+
+                // Store original width when text is created
+                if (element.classList.contains('text-patch')) {
+                    const originalFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+                    element.dataset.originalWidth = (originalFontSize * 5) + 'px';
+                }
 
                 // Better touch handling for mobile
                 element.addEventListener('touchstart', (e) => {
@@ -1581,12 +1600,15 @@
             }
 
             // Update text size in data - FIXED METHOD
-            updateTextSize(textId, width, height) {
+            updateTextSize(textId, width, height, fontSize) {
                 const textIndex = this.texts[this.currentSection].findIndex(t => t.id === textId);
                 if (textIndex !== -1) {
-                    // For text, we're storing the actual dimensions
+                    // For text, we're storing the actual dimensions and font size
                     this.texts[this.currentSection][textIndex].width = width;
                     this.texts[this.currentSection][textIndex].height = height;
+                    if (fontSize) {
+                        this.texts[this.currentSection][textIndex].fontSize = fontSize;
+                    }
                 }
             }
 
