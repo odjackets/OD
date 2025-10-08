@@ -6,7 +6,9 @@
     <title>OD | Senior Jacket Couture</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Original Fonts + Academy Font + Arabic Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200;300;400;500;600;700&family=Anton&family=Archivo+Black&family=Black+Ops+One&family=Russo+One&family=Orbitron:wght@400;500;600;700;800;900&family=Audiowide&family=Permanent+Marker&family=Rock+Salt&family=Press+Start+2P&family=Monoton&family=Iceberg&family=Plaster&family=Stardos+Stencil:wght@400;700&family=Abril+Fatface&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Allura&family=Mr+De+Haviland&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200;300;400;500;600;700&family=Anton&family=Archivo+Black&family=Black+Ops+One&family=Russo+One&family=Orbitron:wght@400;500;600;700;800;900&family=Audiowide&family=Permanent+Marker&family=Rock+Salt&family=Press+Start+2P&family=Monoton&family=Iceberg&family=Plaster&family=Stardos+Stencil:wght@400;700&family=Abril+Fatface&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Pacifico&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Allura&family=Mr+De+Haviland&display=swap">
+    <!-- Arabic Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lateef:wght@200;300;400;500;600;700;800&family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&family=El+Messiri:wght@300;400;500;600;700&family=Reem+Kufi:wght@300;400;500;600;700&family=Markazi+Text:wght@400;500;600;700&family=Almarai:wght@300;400;700;800&family=Tajawal:wght@200;300;400;500;700;800;900&family=Changa:wght@200;300;400;500;600;700;800&family=Jomhuria&family=Rakkas&family=Mada:wght@200;300;400;500;600;700;900&display=swap">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
@@ -139,7 +141,7 @@
             padding: 5px;
             border-radius: 4px;
             user-select: none;
-            white-space: pre-line; /* Changed to pre-line to support line breaks */
+            white-space: pre-line;
             background-color: transparent;
             resize: both;
             overflow: hidden;
@@ -473,7 +475,7 @@
             text-align: center;
             transition: all 0.2s ease;
             font-size: 14px;
-            font-family: 'Inter', sans-serif; /* Default fallback */
+            font-family: 'Inter', sans-serif;
         }
         
         .font-option:hover, .font-option.active {
@@ -502,6 +504,176 @@
             padding: 12px;
             font-size: 14px;
             flex: 1;
+        }
+
+        /* AI Assistant Styles */
+        .ai-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .ai-toggle {
+            background: var(--od-gold);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .ai-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .ai-panel {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            background: var(--od-offwhite);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--od-taupe);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .ai-panel.active {
+            display: flex;
+        }
+
+        .ai-header {
+            background: var(--od-gold);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-title {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .ai-close {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .ai-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--od-taupe);
+        }
+
+        .ai-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            background: var(--od-beige);
+            transition: all 0.2s ease;
+        }
+
+        .ai-tab.active {
+            background: var(--od-offwhite);
+            font-weight: 600;
+        }
+
+        .ai-content {
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .ai-tab-content {
+            display: none;
+        }
+
+        .ai-tab-content.active {
+            display: block;
+        }
+
+        .ai-messages {
+            max-height: 250px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .ai-message {
+            background: var(--od-beige);
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+
+        .ai-message.user {
+            background: var(--od-gold-light);
+            margin-left: auto;
+            color: white;
+        }
+
+        .ai-input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .ai-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--od-taupe);
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .ai-send {
+            background: var(--od-gold);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .ai-image-result {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .ai-image-result img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid var(--od-taupe);
+        }
+
+        .ai-suggestion {
+            background: var(--od-beige);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .ai-suggestion:hover {
+            background: var(--od-gold-light);
+            color: white;
         }
 
         /* Touch-friendly improvements */
@@ -570,6 +742,11 @@
                 width: 70px;
                 height: 70px;
             }
+            
+            .ai-panel {
+                width: 300px;
+                right: -20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -597,6 +774,11 @@
             .font-grid {
                 grid-template-columns: repeat(2, 1fr);
                 max-height: 150px;
+            }
+            
+            .ai-panel {
+                width: 280px;
+                right: -40px;
             }
         }
 
@@ -729,6 +911,7 @@
                 <nav class="hidden md:flex space-x-8">
                     <a href="#" class="od-text-dark hover:od-accent transition">Collections</a>
                     <a href="#" class="od-text-dark hover:od-accent transition">Customize</a>
+                    <a href="#" class="od-text-dark hover:od-accent transition">AI Tools</a>
                     <a href="#" class="od-text-dark hover:od-accent transition">About</a>
                     <a href="#" class="od-text-dark hover:od-accent transition">Contact</a>
                 </nav>
@@ -743,6 +926,7 @@
                 <div class="flex flex-col space-y-3">
                     <a href="#" class="od-text-dark hover:od-accent transition py-2">Collections</a>
                     <a href="#" class="od-text-dark hover:od-accent transition py-2">Customize</a>
+                    <a href="#" class="od-text-dark hover:od-accent transition py-2">AI Tools</a>
                     <a href="#" class="od-text-dark hover:od-accent transition py-2">About</a>
                     <a href="#" class="od-text-dark hover:od-accent transition py-2">Contact</a>
                 </div>
@@ -754,6 +938,11 @@
         <div class="container mx-auto text-center relative z-10 px-4">
             <h1 class="text-3xl md:text-5xl font-bold mb-4 logo od-text-dark">Senior Jacket Couture</h1>
             <p class="text-lg md:text-xl od-text-dark max-w-2xl mx-auto">Craft your legacy with premium custom jackets that define your journey</p>
+            <div class="mt-6">
+                <button onclick="toggleAIPanel()" class="custom-btn accent inline-flex items-center">
+                    <span>🤖 Try Our AI Assistant</span>
+                </button>
+            </div>
         </div>
     </div>
     
@@ -784,6 +973,23 @@
                     <label class="block od-text-dark font-medium mb-2">Upload Your Custom Patch:</label>
                     <input type="file" id="patchUpload" accept="image/*" class="mb-4 p-2 border od-border rounded-lg w-full">
                     <button onclick="openCropModal()" class="custom-btn accent">Add Patch</button>
+                    
+                    <!-- AI Image Generator Section -->
+                    <div class="mt-6">
+                        <h4 class="text-lg font-semibold mb-2 od-text-dark">AI Patch Generator</h4>
+                        <p class="text-sm od-text-light mb-3">Generate custom patches using AI</p>
+                        <div class="flex gap-2">
+                            <input type="text" id="aiPrompt" placeholder="Describe your patch design..." class="p-2 border od-border rounded-lg flex-1">
+                            <button onclick="generateAIImage()" class="custom-btn accent">Generate</button>
+                        </div>
+                        <div id="aiImageResult" class="mt-4 hidden">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="od-text-dark font-medium">AI Generated Patch:</span>
+                                <button onclick="useAIImage()" class="custom-btn accent text-sm py-1 px-3">Use This</button>
+                            </div>
+                            <img id="aiGeneratedImage" src="" alt="AI Generated Patch" class="max-w-full rounded-lg border od-border">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- REORGANIZED: Text Editor Section Third -->
@@ -914,6 +1120,79 @@
         </div>
     </div>
 
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <div class="ai-toggle" onclick="toggleAIPanel()">
+            🤖
+        </div>
+        <div class="ai-panel" id="aiPanel">
+            <div class="ai-header">
+                <div class="ai-title">AI Assistant</div>
+                <div class="ai-close" onclick="toggleAIPanel()">&times;</div>
+            </div>
+            <div class="ai-tabs">
+                <div class="ai-tab active" onclick="switchAITab('chat')">Chat</div>
+                <div class="ai-tab" onclick="switchAITab('design')">Design Ideas</div>
+                <div class="ai-tab" onclick="switchAITab('generate')">Generate</div>
+            </div>
+            <div class="ai-content">
+                <!-- Chat Tab -->
+                <div class="ai-tab-content active" id="chatTab">
+                    <div class="ai-messages" id="aiMessages">
+                        <div class="ai-message">
+                            Hi! I'm your jacket design assistant. I can help you with:
+                            <br>• Changing text color, size, and font
+                            <br>• Adding and positioning patches
+                            <br>• Design suggestions and ideas
+                            <br>• Generating custom patches
+                            <br><br>What would you like help with?
+                        </div>
+                    </div>
+                    <div class="ai-input-group">
+                        <input type="text" class="ai-input" id="aiChatInput" placeholder="Ask me anything...">
+                        <button class="ai-send" onclick="sendAIMessage()">➤</button>
+                    </div>
+                </div>
+                
+                <!-- Design Ideas Tab -->
+                <div class="ai-tab-content" id="designTab">
+                    <h3 class="font-semibold mb-3">Design Suggestions</h3>
+                    <p class="text-sm mb-3">Click any suggestion to apply it to your jacket:</p>
+                    <div class="ai-suggestion" onclick="applyDesignSuggestion('varsity')">
+                        🏈 Varsity Style - Bold letters with school colors
+                    </div>
+                    <div class="ai-suggestion" onclick="applyDesignSuggestion('minimalist')">
+                        ✨ Minimalist - Clean lines and simple text
+                    </div>
+                    <div class="ai-suggestion" onclick="applyDesignSuggestion('retro')">
+                        🕺 Retro - Vintage fonts and classic patches
+                    </div>
+                    <div class="ai-suggestion" onclick="applyDesignSuggestion('modern')">
+                        🚀 Modern - Geometric shapes and tech fonts
+                    </div>
+                    <div class="ai-suggestion" onclick="applyDesignSuggestion('graduation')">
+                        🎓 Graduation Theme - Year, name, and diploma
+                    </div>
+                    <div class="ai-suggestion" onclick="applyDesignSuggestion('sporty')">
+                        ⚽ Sporty - Team name and athletic patches
+                    </div>
+                </div>
+                
+                <!-- Generate Tab -->
+                <div class="ai-tab-content" id="generateTab">
+                    <h3 class="font-semibold mb-3">Generate Custom Patches</h3>
+                    <p class="text-sm mb-3">Describe what you want to generate:</p>
+                    <input type="text" class="ai-input mb-3" id="aiGenerateInput" placeholder="e.g., dragon emblem, floral pattern, school mascot...">
+                    <button class="custom-btn accent w-full" onclick="generateAIPatch()">Generate Patch</button>
+                    <div class="ai-image-result mt-4 hidden" id="aiGenerateResult">
+                        <img id="aiGeneratedPatch" src="" alt="AI Generated Patch">
+                        <button class="custom-btn accent mt-2" onclick="useGeneratedPatch()">Use This Patch</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="od-bg-offwhite border-t od-border mt-12 py-8">
         <div class="container mx-auto px-4">
@@ -1038,6 +1317,70 @@
             { name: 'عربي - Mada', font: 'Mada', class: 'font-mada' }
         ];
 
+        // AI Responses for the chat assistant - IMPROVED WITH SPECIFIC KNOWLEDGE
+        const aiResponses = {
+            greetings: [
+                "Hello! I'm here to help you design the perfect senior jacket.",
+                "Hi there! Ready to create an amazing jacket design?",
+                "Welcome! Let's make your jacket design process easier."
+            ],
+            help: [
+                "I can help you with design suggestions, patch generation, and answering questions about jacket customization.",
+                "You can ask me for design ideas, help with text placement, or generate custom patches using AI.",
+                "I'm here to assist with all aspects of your jacket design - just let me know what you need!"
+            ],
+            textColor: [
+                "To change text color, use the color picker in the 'Add Custom Text' section. It's the second input in the grid layout.",
+                "You can change text color by selecting the color picker next to 'Text Color' in the text customization area.",
+                "The text color selector is located in the 'Add Custom Text' section - it's a color picker input that defaults to black."
+            ],
+            textSize: [
+                "Adjust text size using the slider in the 'Add Custom Text' section. The current size is displayed below the slider.",
+                "You can change text size with the slider labeled 'Text Size'. The value updates in real-time as you move the slider.",
+                "The text size slider is the first control in the grid layout within the text customization area."
+            ],
+            fontFamily: [
+                "Change fonts by clicking on any font option in the font grid. Active fonts are highlighted in gold.",
+                "You can select different fonts from the font grid in the 'Add Custom Text' section. There are many options including Arabic fonts!",
+                "The font selection grid shows all available fonts. Click any to apply it to your text."
+            ],
+            addText: [
+                "To add text to your jacket, type in the text area, customize the settings, then click 'Add Text to Jacket'.",
+                "First enter your text in the textarea, then adjust font, size, and color, finally click the button to add it to the jacket.",
+                "Use the text customization controls to set up your text, then click the 'Add Text to Jacket' button to place it on the design."
+            ],
+            addPatch: [
+                "You can add patches by uploading an image file or using the AI generator. After uploading, click 'Add Patch' to crop and position it.",
+                "To add a patch, either upload an image file or use the AI patch generator with a text description, then follow the cropping steps.",
+                "Patches can be added via file upload or AI generation. After processing, they'll appear on your jacket and can be moved/resized."
+            ],
+            moveElements: [
+                "You can drag any patch or text element to reposition it. On mobile, tap and hold to move elements.",
+                "All patches and text elements are draggable. Simply click and drag to move them around the jacket.",
+                "To move elements, click and drag them. On touch devices, tap and hold then drag to reposition."
+            ],
+            resize: [
+                "You can resize patches by dragging their corners. Text elements can also be resized which will scale the font size.",
+                "Resize patches by dragging the edges or corners. For text, resizing will automatically adjust the font size proportionally.",
+                "All elements can be resized. Patches maintain aspect ratio, while text scales the font size when resized."
+            ],
+            design: [
+                "For a balanced design, try placing larger elements on the back and smaller details on the front.",
+                "Consider using contrasting colors to make your text and patches stand out.",
+                "Vintage fonts work well with classic jacket colors like navy, black, or burgundy."
+            ],
+            patches: [
+                "Patches look great when placed on the sleeves, chest, or back of the jacket.",
+                "You can upload your own images or use our AI generator to create custom patches.",
+                "Try to maintain a consistent style across all your patches for a cohesive look."
+            ],
+            default: [
+                "I'm not sure I understand. Could you rephrase that?",
+                "I'm still learning! Try asking about jacket design, patches, or text customization.",
+                "That's an interesting question! For now, I'm focused on helping with jacket design."
+            ]
+        };
+
         // Main application class
         class JacketCustomizer {
             constructor() {
@@ -1057,6 +1400,7 @@
                 };
                 this.currentJacket = 'black'; // Default jacket
                 this.currentFont = 'Bebas Neue'; // Default font
+                this.aiGeneratedImage = null;
                 
                 this.init();
             }
@@ -1082,6 +1426,27 @@
                     if (e.key === 'Enter') {
                         e.preventDefault();
                         // Just allow the default behavior which adds a new line
+                    }
+                });
+
+                // AI Chat input enter key handler
+                document.getElementById('aiChatInput').addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        this.sendAIMessage();
+                    }
+                });
+
+                // AI Generate input enter key handler
+                document.getElementById('aiGenerateInput').addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        this.generateAIPatch();
+                    }
+                });
+
+                // Main AI prompt input enter key handler
+                document.getElementById('aiPrompt').addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        this.generateAIImage();
                     }
                 });
             }
@@ -1608,6 +1973,376 @@
                 return tempCanvas.toDataURL('image/png', 1.0);
             }
 
+            // AI Image Generation (Simulated) - FIXED VERSION
+            generateAIImage(prompt) {
+                if (!prompt || prompt.trim() === '') {
+                    this.showNotification('Please enter a description for your patch', 'error');
+                    return;
+                }
+                
+                this.toggleLoading(true);
+                
+                // Simulate API call with timeout
+                setTimeout(() => {
+                    // In a real implementation, this would call an AI image generation API
+                    // For demo purposes, we'll use a placeholder image
+                    const placeholderImages = [
+                        'https://via.placeholder.com/200/FF6B6B/FFFFFF?text=Dragon+Emblem',
+                        'https://via.placeholder.com/200/4ECDC4/FFFFFF?text=Floral+Pattern',
+                        'https://via.placeholder.com/200/45B7D1/FFFFFF?text=School+Mascot',
+                        'https://via.placeholder.com/200/96CEB4/FFFFFF?text=Graduation+2025',
+                        'https://via.placeholder.com/200/FECA57/FFFFFF?text=Custom+Logo',
+                        'https://via.placeholder.com/200/FF9FF3/FFFFFF?text=Star+Design',
+                        'https://via.placeholder.com/200/54A0FF/FFFFFF?text=Anchor+Symbol',
+                        'https://via.placeholder.com/200/5F27CD/FFFFFF?text=Crown+Emblem'
+                    ];
+                    
+                    const randomImage = placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
+                    this.aiGeneratedImage = randomImage;
+                    
+                    // Display the result
+                    document.getElementById('aiGeneratedImage').src = randomImage;
+                    document.getElementById('aiImageResult').classList.remove('hidden');
+                    
+                    this.toggleLoading(false);
+                    this.showNotification('AI patch generated successfully!', 'success');
+                }, 2000);
+            }
+
+            // Use AI generated image as a patch - FIXED VERSION
+            useAIImage() {
+                if (!this.aiGeneratedImage) {
+                    this.showNotification('No AI generated image to use', 'error');
+                    return;
+                }
+                
+                this.patchCounter++;
+                const patchId = 'patch-' + this.patchCounter;
+                
+                const patch = {
+                    id: patchId,
+                    image: this.aiGeneratedImage,
+                    left: '50px',
+                    top: '50px',
+                    width: '80px',
+                    height: '80px',
+                    rotation: 0
+                };
+                
+                this.patches[this.currentSection].push(patch);
+                this.createPatchElement(patch);
+                
+                document.getElementById('aiImageResult').classList.add('hidden');
+                this.aiGeneratedImage = null;
+                
+                this.showNotification('AI patch added to jacket!', 'success');
+            }
+
+            // AI Chat Functionality - IMPROVED VERSION
+            sendAIMessage() {
+                const input = document.getElementById('aiChatInput');
+                const message = input.value.trim();
+                
+                if (!message) return;
+                
+                // Add user message
+                this.addAIMessage(message, 'user');
+                input.value = '';
+                
+                // Generate AI response
+                setTimeout(() => {
+                    const response = this.generateAIResponse(message);
+                    this.addAIMessage(response, 'ai');
+                }, 1000);
+            }
+
+            addAIMessage(text, sender) {
+                const messagesContainer = document.getElementById('aiMessages');
+                const messageElement = document.createElement('div');
+                messageElement.className = `ai-message ${sender}`;
+                messageElement.textContent = text;
+                
+                messagesContainer.appendChild(messageElement);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            generateAIResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                    return this.getRandomResponse(aiResponses.greetings);
+                } else if (lowerMessage.includes('help') || lowerMessage.includes('what can you do')) {
+                    return this.getRandomResponse(aiResponses.help);
+                } else if (lowerMessage.includes('color') || lowerMessage.includes('colour')) {
+                    return this.getRandomResponse(aiResponses.textColor);
+                } else if (lowerMessage.includes('size') || lowerMessage.includes('big') || lowerMessage.includes('small')) {
+                    return this.getRandomResponse(aiResponses.textSize);
+                } else if (lowerMessage.includes('font') || lowerMessage.includes('typeface')) {
+                    return this.getRandomResponse(aiResponses.fontFamily);
+                } else if (lowerMessage.includes('add text') || lowerMessage.includes('create text') || lowerMessage.includes('text to jacket')) {
+                    return this.getRandomResponse(aiResponses.addText);
+                } else if (lowerMessage.includes('add patch') || lowerMessage.includes('upload') || lowerMessage.includes('image')) {
+                    return this.getRandomResponse(aiResponses.addPatch);
+                } else if (lowerMessage.includes('move') || lowerMessage.includes('drag') || lowerMessage.includes('position')) {
+                    return this.getRandomResponse(aiResponses.moveElements);
+                } else if (lowerMessage.includes('resize') || lowerMessage.includes('scale') || lowerMessage.includes('bigger') || lowerMessage.includes('smaller')) {
+                    return this.getRandomResponse(aiResponses.resize);
+                } else if (lowerMessage.includes('design') || lowerMessage.includes('layout') || lowerMessage.includes('suggestion')) {
+                    return this.getRandomResponse(aiResponses.design);
+                } else if (lowerMessage.includes('patch') || lowerMessage.includes('emblem') || lowerMessage.includes('logo')) {
+                    return this.getRandomResponse(aiResponses.patches);
+                } else {
+                    return this.getRandomResponse(aiResponses.default);
+                }
+            }
+
+            getRandomResponse(responses) {
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+
+            // Apply design suggestions - IMPROVED VERSION
+            applyDesignSuggestion(style) {
+                // Clear existing design first
+                this.patches[this.currentSection] = [];
+                this.texts[this.currentSection] = [];
+                this.updatePatches();
+                this.updateTexts();
+                
+                switch(style) {
+                    case 'varsity':
+                        this.selectJacket('navy');
+                        this.currentFont = 'Bebas Neue';
+                        document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.font-option[data-font="Bebas Neue"]').classList.add('active');
+                        
+                        // Add varsity-style text
+                        this.textCounter++;
+                        const varsityText = {
+                            id: 'text-' + this.textCounter,
+                            content: 'SENIOR\n2025',
+                            fontFamily: 'Bebas Neue',
+                            fontClass: 'font-bebas',
+                            fontSize: 36,
+                            color: '#FFFFFF',
+                            bold: true,
+                            italic: false,
+                            left: '100px',
+                            top: '120px',
+                            rotation: 0
+                        };
+                        this.texts[this.currentSection].push(varsityText);
+                        this.createTextElement(varsityText);
+                        
+                        this.addAIMessage("Applied varsity style! Navy jacket with bold white lettering.", 'ai');
+                        break;
+                        
+                    case 'minimalist':
+                        this.selectJacket('white');
+                        this.currentFont = 'Oswald';
+                        document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.font-option[data-font="Oswald"]').classList.add('active');
+                        
+                        // Add minimalist text
+                        this.textCounter++;
+                        const minimalistText = {
+                            id: 'text-' + this.textCounter,
+                            content: 'SENIOR',
+                            fontFamily: 'Oswald',
+                            fontClass: 'font-oswald',
+                            fontSize: 28,
+                            color: '#333333',
+                            bold: false,
+                            italic: false,
+                            left: '150px',
+                            top: '150px',
+                            rotation: 0
+                        };
+                        this.texts[this.currentSection].push(minimalistText);
+                        this.createTextElement(minimalistText);
+                        
+                        this.addAIMessage("Applied minimalist style! Clean white jacket with simple text.", 'ai');
+                        break;
+                        
+                    case 'retro':
+                        this.selectJacket('black');
+                        this.currentFont = 'Rockwell';
+                        document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.font-option[data-font="Rockwell"]').classList.add('active');
+                        
+                        // Add retro text
+                        this.textCounter++;
+                        const retroText = {
+                            id: 'text-' + this.textCounter,
+                            content: 'CLASS OF\n2025',
+                            fontFamily: 'Rockwell',
+                            fontClass: 'font-rockwell',
+                            fontSize: 32,
+                            color: '#FFD700',
+                            bold: true,
+                            italic: false,
+                            left: '120px',
+                            top: '130px',
+                            rotation: 0
+                        };
+                        this.texts[this.currentSection].push(retroText);
+                        this.createTextElement(retroText);
+                        
+                        this.addAIMessage("Applied retro style! Classic black jacket with gold vintage font.", 'ai');
+                        break;
+                        
+                    case 'modern':
+                        this.selectJacket('grey');
+                        this.currentFont = 'Orbitron';
+                        document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.font-option[data-font="Orbitron"]').classList.add('active');
+                        
+                        // Add modern text
+                        this.textCounter++;
+                        const modernText = {
+                            id: 'text-' + this.textCounter,
+                            content: 'SENIOR\n25',
+                            fontFamily: 'Orbitron',
+                            fontClass: 'font-orbitron',
+                            fontSize: 30,
+                            color: '#00FFAA',
+                            bold: true,
+                            italic: false,
+                            left: '140px',
+                            top: '140px',
+                            rotation: 0
+                        };
+                        this.texts[this.currentSection].push(modernText);
+                        this.createTextElement(modernText);
+                        
+                        this.addAIMessage("Applied modern style! Grey jacket with tech-inspired font.", 'ai');
+                        break;
+                        
+                    case 'graduation':
+                        this.selectJacket('purple');
+                        this.currentFont = 'Playfair Display';
+                        document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.font-option[data-font="Playfair Display"]').classList.add('active');
+                        
+                        // Add graduation text
+                        this.textCounter++;
+                        const gradText = {
+                            id: 'text-' + this.textCounter,
+                            content: 'GRADUATION\n2025',
+                            fontFamily: 'Playfair Display',
+                            fontClass: 'font-playfair',
+                            fontSize: 28,
+                            color: '#FFFFFF',
+                            bold: true,
+                            italic: true,
+                            left: '110px',
+                            top: '140px',
+                            rotation: 0
+                        };
+                        this.texts[this.currentSection].push(gradText);
+                        this.createTextElement(gradText);
+                        
+                        this.addAIMessage("Applied graduation theme! Purple jacket with elegant text.", 'ai');
+                        break;
+                        
+                    case 'sporty':
+                        this.selectJacket('red');
+                        this.currentFont = 'Impact';
+                        document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+                        document.querySelector('.font-option[data-font="Impact"]').classList.add('active');
+                        
+                        // Add sporty text
+                        this.textCounter++;
+                        const sportText = {
+                            id: 'text-' + this.textCounter,
+                            content: 'TEAM\nSENIORS',
+                            fontFamily: 'Impact',
+                            fontClass: 'font-impact',
+                            fontSize: 34,
+                            color: '#FFFFFF',
+                            bold: true,
+                            italic: false,
+                            left: '130px',
+                            top: '130px',
+                            rotation: 0
+                        };
+                        this.texts[this.currentSection].push(sportText);
+                        this.createTextElement(sportText);
+                        
+                        this.addAIMessage("Applied sporty style! Red jacket with bold team text.", 'ai');
+                        break;
+                }
+                
+                this.showNotification(`Applied ${style} design suggestion!`, 'success');
+            }
+
+            // AI Patch Generation from Assistant Panel
+            generateAIPatch() {
+                const prompt = document.getElementById('aiGenerateInput').value;
+                if (!prompt || prompt.trim() === '') {
+                    this.showNotification('Please enter a description for your patch', 'error');
+                    return;
+                }
+                
+                this.toggleLoading(true);
+                
+                // Simulate API call with timeout
+                setTimeout(() => {
+                    const placeholderImages = [
+                        'https://via.placeholder.com/200/FF6B6B/FFFFFF?text=Dragon+Emblem',
+                        'https://via.placeholder.com/200/4ECDC4/FFFFFF?text=Floral+Pattern',
+                        'https://via.placeholder.com/200/45B7D1/FFFFFF?text=School+Mascot',
+                        'https://via.placeholder.com/200/96CEB4/FFFFFF?text=Graduation+2025',
+                        'https://via.placeholder.com/200/FECA57/FFFFFF?text=Custom+Logo',
+                        'https://via.placeholder.com/200/FF9FF3/FFFFFF?text=Star+Design',
+                        'https://via.placeholder.com/200/54A0FF/FFFFFF?text=Anchor+Symbol',
+                        'https://via.placeholder.com/200/5F27CD/FFFFFF?text=Crown+Emblem'
+                    ];
+                    
+                    const randomImage = placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
+                    
+                    // Display the result in the assistant panel
+                    document.getElementById('aiGeneratedPatch').src = randomImage;
+                    document.getElementById('aiGenerateResult').classList.remove('hidden');
+                    
+                    // Store the image for later use
+                    this.aiGeneratedImage = randomImage;
+                    
+                    this.toggleLoading(false);
+                    this.addAIMessage(`Generated a patch based on: "${prompt}"`, 'ai');
+                }, 2000);
+            }
+
+            // Use generated patch from assistant panel
+            useGeneratedPatch() {
+                if (!this.aiGeneratedImage) {
+                    this.showNotification('No AI generated image to use', 'error');
+                    return;
+                }
+                
+                this.patchCounter++;
+                const patchId = 'patch-' + this.patchCounter;
+                
+                const patch = {
+                    id: patchId,
+                    image: this.aiGeneratedImage,
+                    left: '50px',
+                    top: '50px',
+                    width: '80px',
+                    height: '80px',
+                    rotation: 0
+                };
+                
+                this.patches[this.currentSection].push(patch);
+                this.createPatchElement(patch);
+                
+                document.getElementById('aiGenerateResult').classList.add('hidden');
+                document.getElementById('aiGenerateInput').value = '';
+                this.aiGeneratedImage = null;
+                
+                this.showNotification('AI patch added to jacket!', 'success');
+                this.addAIMessage("Patch added to your jacket! You can move and resize it.", 'ai');
+            }
+
             // Draggable and Resizable Functionality - FIXED VERSION
             makeDraggableAndResizable(element) {
                 // Draggable with touch support
@@ -2026,6 +2761,51 @@
         function shareLink() {
             navigator.clipboard.writeText(window.location.href);
             alert('Link copied to clipboard! Share it with your friends!');
+        }
+
+        // AI Assistant Functions
+        function toggleAIPanel() {
+            const panel = document.getElementById('aiPanel');
+            panel.classList.toggle('active');
+        }
+
+        function switchAITab(tabName) {
+            // Update tabs
+            document.querySelectorAll('.ai-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.ai-tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName + 'Tab').classList.add('active');
+        }
+
+        function sendAIMessage() {
+            jacketCustomizer.sendAIMessage();
+        }
+
+        function applyDesignSuggestion(style) {
+            jacketCustomizer.applyDesignSuggestion(style);
+        }
+
+        function generateAIPatch() {
+            jacketCustomizer.generateAIPatch();
+        }
+
+        function useGeneratedPatch() {
+            jacketCustomizer.useGeneratedPatch();
+        }
+
+        function generateAIImage() {
+            const prompt = document.getElementById('aiPrompt').value;
+            jacketCustomizer.generateAIImage(prompt);
+        }
+
+        function useAIImage() {
+            jacketCustomizer.useAIImage();
         }
     </script>
 </body>
